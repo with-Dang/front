@@ -31,7 +31,7 @@ jobs:
           AWS_DEFAULT_REGION: ap-northeast-2
           BUCKET_NAME: ${{ secrets.S3_BUCKET_NAME }}
         run: |
-          aws s3 sync build s3://$BUCKET_NAME/ \
+          aws s3 sync dist s3://$BUCKET_NAME/ \
           --delete --exact-timestamps
 
       - name: Discordbot alert         # 디스코드 알림
