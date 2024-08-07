@@ -34,6 +34,14 @@ jobs:
           aws s3 sync dist s3://$BUCKET_NAME/ \
           --delete --exact-timestamps
 
+      - name: Invalidate CloudFront Cache
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.S3_MAIN_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_MAIN_SECRET_ACCESS_KEY }}
+          DISTRIBUTION_ID: ${{ secrets.CF_ID }}
+        run: |
+          aws cloudfront create-invalidation --distribution-id $DISTRIBUTION_ID --paths "/*"
+
       - name: Discordbot alert         # 디스코드 알림
         uses: sarisia/actions-status-discord@v1.13.0
         with:
