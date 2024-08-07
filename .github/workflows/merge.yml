@@ -34,6 +34,15 @@ jobs:
           aws s3 sync dist s3://$BUCKET_NAME/ \
           --delete --exact-timestamps
 
+      - name: Verify AWS CLI version
+        run: aws --version
+
+      - name: List CloudFront distributions (debug step)
+        run: aws cloudfront list-distributions
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.S3_MAIN_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_MAIN_SECRET_ACCESS_KEY }}
+
       - name: Invalidate CloudFront Cache
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.S3_MAIN_ACCESS_KEY_ID }}
