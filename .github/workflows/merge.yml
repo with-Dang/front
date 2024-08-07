@@ -36,10 +36,9 @@ jobs:
 
       - name: Invalidate CloudFront Cache # CloudFront 캐시 무효화
         uses: chetan/invalidate-cloudfront-action@v2
-        with:
+        env:
           distribution: ${{ secrets.CF_ID }}
           paths: "/*"
-        env:
           AWS_REGION: "us-east-1"
           AWS_ACCESS_KEY_ID: ${{ secrets.S3_MAIN_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_MAIN_SECRET_ACCESS_KEY }}
