@@ -10,8 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/react-router-dom": "^5.3.3",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.0",
+    "vite-plugin-next-react-router": "^0.7.1"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
@@ -24,5 +27,9 @@
     "eslint-plugin-react-refresh": "^0.4.7",
     "typescript": "^5.2.2",
     "vite": "^5.3.4"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/hhbb0081/front.git",
+  "author": "happppi <102276917+hhbb0081@users.noreply.github.com>",
+  "license": "MIT"
 }
