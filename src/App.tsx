@@ -47,7 +47,11 @@ for (const path of Object.keys(pages)) {
 const router = createBrowserRouter(
   routes.map(({ Element, ErrorBoundary, ...rest }) => ({
     ...rest,
-    element: <Element />,
+    element: (
+      <div className="App" style={{ height: '100dvh' }}>
+        <Element />
+      </div>
+    ),
     ...(ErrorBoundary && { errorElement: <ErrorBoundary /> }),
   }))
 );
