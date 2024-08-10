@@ -1,7 +1,12 @@
+import Header from "../components/organisms/header/Header"
+import Soldout from "../components/views/main/soldout/Soldout"
 
 function index() {
   return (
-    <div>메인 페이지</div>
+    <>
+      <Header />
+      <Soldout />
+    </>
   )
 }
 
