@@ -1,6 +1,80 @@
 #root {
-  max-width: 1280px;
+  /* max-width: 1280px; */
+  width: 100%;
+  height: 100%;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
+}
+
+.App {
+  margin: 0 auto;
+  height: 100%;
+}
+
+
+@media only screen and (max-width: 430px) {
+  html {
+    font-size: 12px;
+  }
+  .App {
+    min-width: 320px;
+    /* width: 100%; */
+    background-color: white;
+  }
+  .navbar,
+  .top_header{
+    width: 100%;
+    margin: 0 auto;
+    /* background-color: black; */
+  }
+  .top_header_page{
+    width: 100%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 0.94rem;
+  }
+}
+@media only screen and (min-width: 430px) and (max-width: 800px) {
+  html {
+    font-size: 16px;
+  }
+  .App {
+    max-width: 430px;
+    /* width: 100%; */
+  }
+
+  .navbar,
+  .top_header,
+  .top_header_page {
+    left: calc(50% - 215px); /* Center the navbar */
+    right: calc(50% - 215px); /* Center the navbar */
+    /* background-color: black; */
+  }
+}
+
+@media (min-width: 800px) {
+  html {
+    font-size: 18px;
+  }
+  .App {
+    /* width: 600px; */
+    max-width: 600px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 8px 36px;
+  }
+
+  .navbar,
+  .top_header,
+  .top_header_page {
+    left: calc(50% - 300px); /* Center the navbar */
+    right: calc(50% - 300px); /* Center the navbar */
+    /* background-color: black; */
+    padding: 0.5rem 0;
+  }
+}
+
+@font-face {
+  font-family: 'NPSfontBold';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/NPSfontBold.woff2') format('woff2');
+  font-style: normal;
 }

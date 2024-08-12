@@ -1,0 +1,83 @@
+/* Soldout */
+
+.soldout {
+  width: 90%;
+  margin: 2rem auto;
+}
+
+/* SoldoutContent */
+
+.soldoutContent {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin: 1rem 0;
+  overflow-x: auto;
+  padding: 1rem 0;
+}
+
+.soldoutContent::-webkit-scrollbar {
+  height: 5px;  /* 스크롤바의 너비 */
+}
+
+.soldoutContent::-webkit-scrollbar-thumb {
+  height: 30%; /* 스크롤바의 길이 */
+  background: rgb(43, 43, 43); /* 스크롤바의 색상 */
+  
+  border-radius: 5px;
+}
+
+.soldoutContent::-webkit-scrollbar-track {
+  background: rgba(43, 43, 43, .1);  /*스크롤바 뒷 배경 색상*/
+}
+
+/* SoldoutCard */
+
+.soldoutCard {
+  flex: 0 0 30%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.soldoutCard__label {
+  position: relative;
+}
+
+.soldoutCard__time {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+.soldoutCard__price {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+
+@media only screen and (max-width: 430px) { 
+  .soldoutContent::-webkit-scrollbar {
+    height: 3px;
+  }
+
+  .soldoutContent::-webkit-scrollbar-thumb {
+    height: 3px;
+  }
+}
+
+@media only screen and (min-width: 430px) and (max-width: 800px) { 
+  .soldoutContent::-webkit-scrollbar {
+    height: 3px;
+  }
+
+  .soldoutContent::-webkit-scrollbar-thumb {
+    height: 3px;
+  }
+}
