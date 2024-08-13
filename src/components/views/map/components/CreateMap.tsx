@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 import { IconCurrentLocation } from "../../../../assets/png";
+import { useSwipeHandler } from "../../../../hook/map/useSwipeHandler";
 import { MapItemProps } from "../../../../types/map/type";
 import "./CreateMap.css";
 import { MapCardItem } from "./mapCard/MapCardItem";
 import { MapCustomMarker } from "./mapCard/MapCustomMarker";
+
 interface Location {
   lat: number;
   lng: number;
@@ -17,35 +19,29 @@ interface MapPops {
 }
 export function CreateMap({ currentLocation, level = 4, mapList }: MapPops) {
   const [center, setCenter] = useState<Location>(currentLocation);
+  const [isClick, setIsClick] = useState<number | null>(null);
   const handleSetCenter = (location: Location) => {
     setCenter(location);
-  };
-  const [isClick, setIsClick] = useState<number | null>(null);
-  const [startX, setStartX] = useState<number>(0);
-  const handleIsClick = (idx: number) => () => {
-    setIsClick(isClick === idx ? null : idx); // Clicked item toggle
-  };
-  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    setStartX(e.touches[0].pageX);
-  };
-  const handleSwipe = (endX: number) => {
-    const diffX = startX - endX;
-    if (Math.abs(diffX) > 50) {
-      handlePrevNext(diffX > 0 ? 1 : -1);
-    }
-  };
-  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-    handleSwipe(e.touches[0].pageX);
   };
   const handlePrevNext = (delta: number) => {
     if (isClick !== null) {
       const newIndex = (isClick + delta + mapList.length) % mapList.length;
       setIsClick(newIndex);
+      handleSetCenter(mapList[newIndex].center);
     } else if (mapList.length > 0) {
       setIsClick(0);
+      handleSetCenter(mapList[0].center);
     }
-    handleSetCenter(mapList[isClick ?? 0].center);
   };
+
+  const {
+    handleTouchStart,
+    handleTouchMove,
+    handleMouseDown,
+    handleMouseMove,
+    handleMouseUp,
+  } = useSwipeHandler(handlePrevNext);
+
   return (
     <Map
       center={center}
@@ -63,7 +59,7 @@ export function CreateMap({ currentLocation, level = 4, mapList }: MapPops) {
             title={item.title}
             center={item.center}
             category={item.category}
-            isClick={handleIsClick(idx)}
+            isClick={() => setIsClick(isClick === idx ? null : idx)}
           />
         </React.Fragment>
       ))}
@@ -83,19 +79,15 @@ export function CreateMap({ currentLocation, level = 4, mapList }: MapPops) {
         <React.Fragment key={idx}>
           {isClick === idx && (
             <div
-              style={{
-                position: "absolute",
-                bottom: "2.56rem",
-                zIndex: "100",
-                width: "100%",
-                display: "flex",
-                overflowX: "auto",
-              }}
-              className={`map-card ${
+              className={`createMap__mapCardWrapper createMap__mapCard ${
                 isClick !== null ? "slide-in" : "slide-out"
               }`}
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUp}
+              onMouseLeave={handleMouseUp}
             >
               <MapCardItem
                 title={item.title}
