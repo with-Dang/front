@@ -21,6 +21,9 @@ function IconLabel({
     borderRadius: borderRadius,
     fontFamily: 'NPSfontBold',
     padding: "0.125rem 0.5rem",
+    display: "flex",
+    alignItems: "center",
+    gap: "0.25rem",
   };
   return (
     <span style={IconLabelStyle}>

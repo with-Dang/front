@@ -54,6 +54,16 @@
   right: 0.5rem;
 }
 
+.soldoutCard__title {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.25rem;
+  line-height: 1.125rem;
+
+  text-align: left;
+}
+
 .soldoutCard__price {
   display: flex;
   align-items: center;
