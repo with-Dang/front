@@ -18,7 +18,6 @@ function Text({
     fontWeight: fontWeight,
     fontSize: fontSize,
     fontFamily: 'NPSfontBold',
-    lineHeight: fontSize
   };
 
   return (

@@ -25,20 +25,22 @@ const SoldoutCard = ({
         color={COLORS.text}
         backgroundColor={COLORS.whiteGray}
         borderRadius="3px"
-        text={`${totalPeople}/${people}`}
+        text={`${people}/${totalPeople}`}
       >
         <IoPersonCircle />
       </IconLabel>
 
-      <Text
-        color={COLORS.text}
-        fontSize="1rem"
-      >{name}</Text>
-      <Text
-        color={COLORS.gray}
-        fontSize="0.75rem"
-      >{location}</Text>
-      <div className="soldoutCard__price">
+      <div className={S.soldoutCard__title}>
+        <Text
+          color={COLORS.text}
+          fontSize="1rem"
+        >{name}</Text>
+        <Text
+          color={COLORS.gray}
+          fontSize="0.75rem"
+        >{location}</Text>
+      </div>
+      <div className={S.soldoutCard__price}>
         <Text
           color={COLORS.red}
           fontSize="0.75rem"
