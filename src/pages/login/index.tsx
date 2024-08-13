@@ -1,7 +1,10 @@
+import Header from "../../components/organisms/header/Header"
 
 function index() {
   return (
-    <div>로그인 페이지</div>
+    <div>
+      <Header />
+    </div>
   )
 }
 
