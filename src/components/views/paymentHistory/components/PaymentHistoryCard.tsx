@@ -3,6 +3,7 @@ import room from "../../../../assets/png/room.png";
 import { COLORS } from "../../../../styles/Color";
 import Image from "../../../atoms/image/Image";
 import Text from "../../../atoms/text/Text";
+import PriceBox from "../../../molecules/priceBox/PriceBox";
 import RouterLabel from "../../../molecules/routerLabel/RouterLabel";
 import S from "./PaymentHistoryCard.module.css";
 
@@ -30,7 +31,6 @@ export const PaymentHistoryCard = ({
   cancelPath,
 }: paymentHistoryCardProps) => {
   const navigate = useNavigate();
-  const discountedPrice = Math.round(price * (1 - 0.01 * discountRate)); //소수점 반올림
   const handleCancel = () => {
     if (cancelPath) {
       navigate(cancelPath);
@@ -43,7 +43,7 @@ export const PaymentHistoryCard = ({
         color={COLORS.lightGray}
         fontSize="0.875rem"
         fontWeight="700"
-        url={`/${path}`} //수정필요
+        url={`/payment-history/detail?${path}`} //수정필요
         fill={COLORS.lightGray}
       />
       <div
@@ -65,23 +65,15 @@ export const PaymentHistoryCard = ({
           borderRadius="0.1875rem"
         />
         <div className={S.paymentHistory__item__content}>
-          <Text color={COLORS.text} fontSize="1rem" fontWeight="700">
-            {itemTitle}
-          </Text>
+          <span className={S.paymentHistory__item__content_fristSpan}>
+            <Text color={COLORS.text} fontSize="1rem" fontWeight="700">
+              {itemTitle}
+            </Text>
+          </span>
           <Text color={COLORS.lightGray} fontSize="0.75rem" fontWeight="400">
             {address}
           </Text>
-          <span className={S.paymentHistory__item__content__discount}>
-            <Text color={COLORS.lightGray} fontSize="0.875rem" fontWeight="400">
-              {discountRate}%
-            </Text>
-            <Text color={COLORS.lightGray} fontSize="0.75rem" fontWeight="400">
-              {price}원
-            </Text>
-          </span>
-          <Text color={COLORS.lightRed} fontSize="1rem" fontWeight="400">
-            {discountedPrice}원
-          </Text>
+          <PriceBox discountRate={discountRate} price={price} />
         </div>
       </div>
       {state === "수령 전" ? (

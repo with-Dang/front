@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import { COLORS } from "../../../styles/Color";
 import Text from "../../atoms/text/Text";
 import { PaymentHistoryCard } from "./components/PaymentHistoryCard";
-import { PAYMENTHISTORY, PAYMENTHISTORYTEST, PAYMENTHISTORYTEST2 } from "./constants/constant";
+import {
+  PAYMENTHISTORY,
+  PAYMENTHISTORYTEST,
+  PAYMENTHISTORYTEST2,
+} from "./constants/constant";
 import S from "./PaymentHistoy.module.css";
 function PaymentHistoy() {
   const [select, setSelect] = useState<"progress" | "complete">("progress");

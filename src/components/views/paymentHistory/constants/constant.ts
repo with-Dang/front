@@ -15,7 +15,7 @@ export const PAYMENTHISTORYTEST = [
     address: "울산광역시 가톨릭구 가톨릭동 111-13",
     discountRate: 30,
     price: 20000,
-    path: "/details/1",
+    path: "1",
     cancelPath: "/cancel/1",
   },
   {
@@ -24,7 +24,7 @@ export const PAYMENTHISTORYTEST = [
     address: "울산광역시 가톨릭구 가톨릭동 111-12",
     discountRate: 20,
     price: 20000,
-    path: "/details/2",
+    path: "2",
     cancelPath: "/cancel/2",
   },
   {
@@ -33,7 +33,7 @@ export const PAYMENTHISTORYTEST = [
     address: "울산광역시 가톨릭구 가톨릭동 111-11",
     discountRate: 10,
     price: 20000,
-    path: "/details/3",
+    path: "3",
     cancelPath: "/cancel/3",
   },
   {
@@ -42,7 +42,7 @@ export const PAYMENTHISTORYTEST = [
     address: "울산광역시 가톨릭구 가톨릭동 111-11",
     discountRate: 19.899,
     price: 20000,
-    path: "/details/4",
+    path: "4",
     cancelPath: "/cancel/4",
   },
 ];
@@ -66,7 +66,7 @@ export const PAYMENTHISTORYTEST2: PaymentHistoryTest2[] = [
     address: "울산광역시 가톨릭구 가톨릭동 111-13",
     discountRate: 30,
     price: 20000,
-    path: "/details/1",
+    path: "1",
   },
   {
     state: "공구 실패",
@@ -75,7 +75,7 @@ export const PAYMENTHISTORYTEST2: PaymentHistoryTest2[] = [
     address: "울산광역시 가톨릭구 가톨릭동 111-12",
     discountRate: 20,
     price: 20000,
-    path: "/details/2",
+    path: "2",
   },
   {
     state: "공구 확정",
@@ -84,7 +84,7 @@ export const PAYMENTHISTORYTEST2: PaymentHistoryTest2[] = [
     address: "울산광역시 가톨릭구 가톨릭동 111-11",
     discountRate: 10,
     price: 20000,
-    path: "/details/3",
+    path: "3",
   },
   {
     state: "공구 실패",
@@ -93,6 +93,6 @@ export const PAYMENTHISTORYTEST2: PaymentHistoryTest2[] = [
     address: "울산광역시 가톨릭구 가톨릭동 111-11",
     discountRate: 19.899,
     price: 20000,
-    path: "/details/4",
+    path: "4",
   },
 ];

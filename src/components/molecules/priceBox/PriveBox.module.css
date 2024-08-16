@@ -1,0 +1,28 @@
+.priceBoxWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: auto;
+}
+
+.priceBox {
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+}
+
+.priceBox span:nth-of-type(2) {
+  /* text-decoration: line-through; */
+  text-align: center;
+  margin-left: 0.31rem;
+  position: relative;
+}
+.priceBox span:nth-of-type(2)::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background-color: currentColor;
+  top: 50%;
+  left: 0;
+}

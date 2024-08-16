@@ -1,0 +1,16 @@
+.paymentHistoryDetailPersonnel {
+  display: flex;
+  align-items: center;
+  margin-top: auto;
+}
+.paymentHistoryDetailPersonnel span:nth-of-type(1) {
+  margin-bottom: 0;
+}
+.paymentHistoryDetailPersonnel div {
+  display: flex;
+  align-items: center;
+  border-radius: 0.3125rem;
+  border: 0.5px solid #d9d9d9;
+  padding: 0rem 0.3125rem;
+  gap: 0.1875rem;
+}
