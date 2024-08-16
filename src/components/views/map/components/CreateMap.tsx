@@ -3,7 +3,7 @@ import { Map, MapMarker } from "react-kakao-maps-sdk";
 import { IconCurrentLocation } from "../../../../assets/png";
 import { useSwipeHandler } from "../../../../hook/map/useSwipeHandler";
 import { MapItemProps } from "../../../../types/map/type";
-import "./CreateMap.css";
+import S from "./CreateMap.module.css";
 import { MapCardItem } from "./mapCard/MapCardItem";
 import { MapCustomMarker } from "./mapCard/MapCustomMarker";
 
@@ -79,8 +79,8 @@ export function CreateMap({ currentLocation, level = 4, mapList }: MapPops) {
         <React.Fragment key={idx}>
           {isClick === idx && (
             <div
-              className={`createMap__mapCardWrapper createMap__mapCard ${
-                isClick !== null ? "slide-in" : "slide-out"
+              className={`${S.createMap__mapCardWrapper} ${
+                isClick !== null ? S.slideIn : S.slideOut
               }`}
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}

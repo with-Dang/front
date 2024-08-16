@@ -7,12 +7,6 @@ type MapChipProps = {
   onSelect: (icon: string) => void;
 };
 export const MapChipBox = ({ selectIcon, onSelect }: MapChipProps) => {
-  // const [selectIcon, setSelectIcon] = useState("");
-  // const handleSelectIcon = (icon: string) => {
-  //   if (icon === selectIcon) {
-  //     setSelectIcon("");
-  //   } else setSelectIcon(icon);
-  // };
   return (
     <div className={styles.map__chipbox}>
       {MapChipBoxIcons.map((item) => (
