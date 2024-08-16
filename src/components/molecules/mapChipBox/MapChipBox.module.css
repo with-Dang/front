@@ -1,7 +1,6 @@
 .map__chipbox {
   display: flex;
-  width: 85%;
+  width: 90%;
   align-items: center;
-  /* justify-content: center; */
   margin: 0 auto;
 }

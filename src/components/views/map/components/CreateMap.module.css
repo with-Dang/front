@@ -1,9 +1,16 @@
-/* styles.css 또는 해당 컴포넌트의 스타일 파일에 추가 */
-
+/* CreateMap */
+/* MapcardWrapper */
+.createMap__mapCardWrapper {
+  position: absolute;
+  bottom: 2.56rem;
+  z-index: 100;
+  width: 100%;
+  display: flex;
+  overflow-x: auto;
+}
 .slide-in {
   animation: slideIn 0.5s ease-out;
 }
-
 .slide-out {
   animation: slideOut 0.5s ease-in;
 }
