@@ -1,0 +1,61 @@
+.mypage {
+  width: 90%;
+  margin: auto;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+.mypage__profile {
+  display: flex;
+}
+.mypage__profile div {
+  margin-top: 0.25rem;
+}
+.mypage__info {
+  margin-left: 1rem;
+  margin-right: auto;
+  flex-direction: column;
+  display: flex;
+  align-items: flex-start;
+}
+.mypage__edit {
+  border-radius: 1.25rem;
+  background: #e7ddd4;
+
+  width: 4.4375rem;
+  height: 1.625rem;
+}
+
+.mypage__receipt {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem 0;
+  margin: 1.5rem 0;
+  border-bottom: 1px solid #d9d9d9;
+  border-top: 1px solid #d9d9d9;
+}
+.mypage__receipt span {
+  margin-left: 0.75rem;
+}
+
+.mypage__menu {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+.mypage__menu div {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin: 0.75rem 0;
+}
+
+.mypage__control {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  margin-top: auto;
+}
+.mypage__control span {
+  margin-top: 0.87rem;
+}

@@ -1,15 +1,12 @@
-import { useState } from "react";
 import { MapChip } from "../../atoms/mapChip/MapChip";
 import styles from "./MapChipBox.module.css";
 import { MapChipBoxIcons } from "./constants";
 
-export const MapChipBox = () => {
-  const [selectIcon, setSelectIcon] = useState("");
-  const handleSelectIcon = (icon: string) => {
-    if (icon === selectIcon) {
-      setSelectIcon("");
-    } else setSelectIcon(icon);
-  };
+type MapChipProps = {
+  selectIcon: string;
+  onSelect: (icon: string) => void;
+};
+export const MapChipBox = ({ selectIcon, onSelect }: MapChipProps) => {
   return (
     <div className={styles.map__chipbox}>
       {MapChipBoxIcons.map((item) => (
@@ -18,8 +15,8 @@ export const MapChipBox = () => {
             name={item.name}
             fill={item.fill}
             icon={item.icon}
-            filter={item.filter}
-            onSelect={handleSelectIcon}
+            category={item.category}
+            onSelect={onSelect}
             selectIcon={selectIcon}
           />
         </div>
