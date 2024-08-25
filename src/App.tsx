@@ -22,25 +22,39 @@ interface Pages {
   } & RouteCommon;
 }
 
-const pages: Pages = import.meta.glob("./pages/**/*.tsx", { eager: true });
+const pages: Pages = import.meta.glob("./pages/**/*.{tsx,jsx}", {
+  eager: true,
+});
 const routes: IRoute[] = [];
+
 for (const path of Object.keys(pages)) {
-  const fileName = path.match(/\.\/pages\/(.*)\.tsx$/)?.[1];
+  const fileName = path.match(/\.\/pages\/(.*)\.(tsx|jsx)$/)?.[1];
   if (!fileName) {
     continue;
   }
 
-  const normalizedPathName = fileName.includes("$")
-    ? fileName.replace("$", ":")
-    : fileName.replace(/\/index/, "");
+  const normalizedPathName = fileName
+    .replace(/\[([^\]]+)\]/g, ":$1") // Convert [param] to :param
+    .replace(/\/index$/, "") // Remove /index at the end
+    .toLowerCase(); // Ensure the path is lowercase
 
-  routes.push({
-    path: fileName === "index" ? "/" : `/${normalizedPathName.toLowerCase()}`,
-    Element: pages[path].default,
-    loader: pages[path]?.loader as LoaderFunction | undefined,
-    action: pages[path]?.action as ActionFunction | undefined,
-    ErrorBoundary: pages[path]?.ErrorBoundary,
-  });
+  if (normalizedPathName.includes(":")) {
+    routes.push({
+      path: `/${normalizedPathName}`,
+      Element: pages[path].default,
+      loader: pages[path]?.loader as LoaderFunction | undefined,
+      action: pages[path]?.action as ActionFunction | undefined,
+      ErrorBoundary: pages[path]?.ErrorBoundary,
+    });
+  } else {
+    routes.push({
+      path: fileName === "index" ? "/" : `/${normalizedPathName}`,
+      Element: pages[path].default,
+      loader: pages[path]?.loader as LoaderFunction | undefined,
+      action: pages[path]?.action as ActionFunction | undefined,
+      ErrorBoundary: pages[path]?.ErrorBoundary,
+    });
+  }
 }
 
 const router = createBrowserRouter(
