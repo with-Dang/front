@@ -12,11 +12,11 @@ const Soldout = () => {
         color={COLORS.text}
         fontSize="1.25rem"
         fontWeight="700"
-        url="/login"
+        url="/purchase?category=total&soldout=true"
       />
       <SoldoutContent />
     </div>
-  )
-}
+  );
+};
 
-export default Soldout
+export default Soldout;
