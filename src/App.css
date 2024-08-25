@@ -4,13 +4,19 @@
   height: 100%;
   margin: 0 auto;
   text-align: center;
+  --app-height: 100dvh;
+}
+
+@media (min-height: 100dvh) {
+  #root {
+    --app-height: 100%;
+  }
 }
 
 .App {
   margin: 0 auto;
-  height: 100%;
+  height: var(--app-height);
 }
-
 
 @media only screen and (max-width: 430px) {
   html {
@@ -22,12 +28,12 @@
     background-color: white;
   }
   .navbar,
-  .top_header{
+  .top_header {
     width: 100%;
     margin: 0 auto;
     /* background-color: black; */
   }
-  .top_header_page{
+  .top_header_page {
     width: 100%;
     margin: 0 auto;
     left: 0;
@@ -74,7 +80,8 @@
 }
 
 @font-face {
-  font-family: 'NPSfontBold';
-  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/NPSfontBold.woff2') format('woff2');
+  font-family: "NPSfontBold";
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2310@1.0/NPSfontBold.woff2")
+    format("woff2");
   font-style: normal;
 }

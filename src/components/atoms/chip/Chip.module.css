@@ -1,0 +1,29 @@
+.chip {
+  padding: 0.4125rem 0.75rem;
+  color: var(--main, #469387);
+  background-color: var(--white, #fff);
+  border: 1px solid var(--border, #d9d9d9);
+  border-radius: 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.chip:hover {
+  background-color: var(--hover, #f0f0f0);
+}
+
+.chip.selected {
+  background-color: var(--main, #469387);
+  color: var(--white, #fff);
+  border: 1px solid var(--main, #469387);
+  transition: background-color 0.3s ease;
+}
+
+.chip.selected:hover {
+  background-color: var(--main, #267267);
+}

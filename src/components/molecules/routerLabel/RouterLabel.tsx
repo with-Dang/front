@@ -30,7 +30,7 @@ function RouterLabel({
       <Text color={color} fontSize={fontSize} fontWeight={fontWeight}>
         {title}
       </Text>
-      <span onClick={() => navigate(url)}>
+      <span onClick={() => navigate(url)} style={{ cursor: "pointer" }}>
         <GoChevronRight fill={fill} />
       </span>
     </div>
