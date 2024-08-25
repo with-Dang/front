@@ -1,4 +1,3 @@
-
 import {
   ActionFunction,
   createBrowserRouter,
@@ -48,7 +47,7 @@ const router = createBrowserRouter(
   routes.map(({ Element, ErrorBoundary, ...rest }) => ({
     ...rest,
     element: (
-      <div className="App" style={{ height: '100dvh' }}>
+      <div className="App">
         <Element />
       </div>
     ),

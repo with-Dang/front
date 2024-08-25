@@ -46,6 +46,7 @@
 
 .soldoutCard__label {
   position: relative;
+  width: 100%;
 }
 
 .soldoutCard__time {

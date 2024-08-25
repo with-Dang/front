@@ -7,9 +7,11 @@ function index() {
   return (
     <>
       <Header />
-      <AdverSlider />
-      <Soldout />
-      <Pick />
+      <div style={{ paddingTop: "2.75rem" }}>
+        <AdverSlider />
+        <Soldout />
+        <Pick />
+      </div>
     </>
   );
 }
