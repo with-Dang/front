@@ -1,0 +1,28 @@
+.check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  position: relative;
+}
+
+.check__input {
+  background-color: var(--white, #fff);
+  width: 0.875rem;
+  height: 0.875rem;
+  flex-shrink: 0;
+  border: 1px solid var(--border, #d9d9d9);
+  transition: background-color 0.3s ease;
+  border-radius: 3px;
+}
+
+.check__input.selected {
+  background-color: var(--main, #469387);
+  border: 1px solid var(--main, #469387);
+}
+
+.check > svg {
+  position: absolute;
+  left: 0;
+}

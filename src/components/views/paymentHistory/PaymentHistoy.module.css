@@ -1,0 +1,39 @@
+.paymentHistory {
+  width: 90%;
+  margin: 2rem auto;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+.paymentHistory__menu {
+  display: flex;
+  position: relative;
+  border-bottom: 0.7px solid#777;
+}
+
+.paymentHistory__menu__item {
+  display: flex;
+  cursor: pointer;
+  white-space: nowrap;
+  border-radius: 0.625rem 0.625rem 0rem 0rem;
+  width: 4rem;
+  height: 2.1875rem;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.selected {
+  background: #469387;
+}
+.paymentHistory__menu__item span:hover {
+  transform: scale(1.15);
+}
+
+
+.paymentHistory__list{
+  margin-top: 1.03rem;
+  overflow-x: auto;
+}
+.paymentHistory__list::-webkit-scrollbar{
+  display: none;
+}

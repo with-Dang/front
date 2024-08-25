@@ -1,0 +1,86 @@
+.paymentHistoryDetail {
+  background-color: #fff;
+  width: 90%;
+  margin: 1.5rem auto;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1.25rem;
+  height: 72%;
+}
+.canceled {
+  height: 67%;
+}
+
+.paymentHistoryDetail__data {
+  position: relative;
+  margin: 1.5rem auto;
+  width: 90%;
+}
+.paymentHistoryDetail__data::before,
+.paymentHistoryDetail__data::after {
+  content: "";
+  position: absolute;
+  height: 0.125rem;
+  background-color: #469387;
+  width: 33%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.paymentHistoryDetail__data::before {
+  left: 0;
+}
+
+.paymentHistoryDetail__data::after {
+  right: 0;
+}
+
+.paymentHistoryDetail__content {
+  margin: 0 auto;
+  width: 90%;
+  display: flex;
+}
+.paymentHistoryDetail__content__info {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-left: 0.94rem;
+}
+.paymentHistoryDetail__content__info span:nth-of-type(1) {
+  margin-bottom: 0.38rem;
+}
+
+.paymentHistoryDetail__line {
+  width: 100%;
+  position: relative;
+  height: 0px;
+  border-top: 0.125rem dashed #d9d9d9;
+  margin-top: auto;
+}
+.paymentHistoryDetail__line::before,
+.paymentHistoryDetail__line::after {
+  content: "";
+  position: absolute;
+  height: 0.125rem;
+  background-color: #469387;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.874rem;
+  height: 1.874rem;
+  border-radius: 50%;
+}
+.paymentHistoryDetail__line::before {
+  left: -0.987rem;
+}
+.paymentHistoryDetail__line::after {
+  right: -0.987rem;
+}
+
+.paymentHistoryDetail__button {
+  border-radius: 0.3125rem;
+  border: 1px solid #d9d9d9;
+  background-color: #fff;
+  padding: 0.31rem 0;
+  width: 90%;
+  margin: 1.5rem auto;
+}

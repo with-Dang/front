@@ -1,0 +1,38 @@
+/* CreateMap */
+/* MapcardWrapper */
+.createMap__mapCardWrapper {
+  position: absolute;
+  bottom: 2.56rem;
+  z-index: 100;
+  width: 100%;
+  display: flex;
+  overflow-x: auto;
+}
+.slide-in {
+  animation: slideIn 0.5s ease-out;
+}
+.slide-out {
+  animation: slideOut 0.5s ease-in;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+}
