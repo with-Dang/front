@@ -7,7 +7,7 @@ import S from "../../components/views/purchase/Purchase.module.css";
 function index() {
   return (
     <div className={S.purchase}>
-      <Header backIcon={true} logoIcon="logo" />
+      <Header backIcon={true} logoIcon="logo" backUrl="/" />
       <div style={{ paddingTop: "2.75rem" }}>
         <PurchaseHeader />
         <PurchaseContent />

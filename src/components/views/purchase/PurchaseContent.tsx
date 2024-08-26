@@ -1,6 +1,6 @@
-import React from "react";
 import PurchaseCard from "./PurchaseCard";
 
+import React from "react";
 import { useSearchParams } from "react-router-dom";
 import S from "./Purchase.module.css";
 
@@ -83,6 +83,7 @@ const PurchaseContent = () => {
           <React.Fragment key={item.id}>
             <PurchaseCard
               key={item.id}
+              id={item.id}
               name={item.name}
               location={item.location}
               price={item.price}

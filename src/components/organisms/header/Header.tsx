@@ -16,11 +16,11 @@ const Header: React.FC<HeaderProps> = ({
   backIcon = false,
   logoIcon = "mainLogo",
   backgroundColor = "transparent",
-  backUrl = "/",
+  backUrl,
 }) => {
   const navigate = useNavigate();
   const handleBackClick = () => {
-    if (backUrl) {
+    if (backUrl && backUrl !== "/") {
       navigate(backUrl);
     } else {
       navigate(-1);

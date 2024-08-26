@@ -8,13 +8,13 @@ type ImageType = {
   ratio?: boolean | number;
 };
 
-function Image({ src, width, height, borderRadius, ratio = 1 }: ImageType) {
+function Image({ src, width, height, borderRadius, ratio }: ImageType) {
   const ImageStyle: React.CSSProperties = {
     width: width,
     height: height,
     borderRadius: borderRadius,
     objectFit: "cover",
-    aspectRatio: `1 / ${ratio}`,
+    ...(ratio && { aspectRatio: `1 / ${ratio}` }),
   };
   return <img src={src} alt="alt" style={ImageStyle} />;
 }
