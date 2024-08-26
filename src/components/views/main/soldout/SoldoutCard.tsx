@@ -9,6 +9,7 @@ import S from "./Soldout.module.css";
 
 const SoldoutCard = ({
   name,
+  id,
   location,
   price,
   discount,
@@ -17,7 +18,7 @@ const SoldoutCard = ({
   people,
 }: SoldoutProps) => {
   return (
-    <div className={S.soldoutCard}>
+    <div className={S.soldoutCard} key={id}>
       <SoldoutCardImg time={time} />
       <IconLabel
         color={COLORS.text}

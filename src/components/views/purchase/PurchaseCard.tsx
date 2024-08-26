@@ -3,11 +3,13 @@ import { SoldoutProps } from "../../../types/home";
 import Text from "../../atoms/text/Text";
 import SoldoutCardImg from "../main/soldout/SoldoutCardImg";
 
+import { useNavigate } from "react-router-dom";
 import Progress from "../../molecules/progress/Progress";
 import S from "../main/soldout/Soldout.module.css";
 import P from "./Purchase.module.css";
 
 const PurchaseCard = ({
+  id,
   name,
   location,
   price,
@@ -16,8 +18,9 @@ const PurchaseCard = ({
   totalPeople,
   people,
 }: SoldoutProps) => {
+  const navigate = useNavigate();
   return (
-    <div className={P.parchaseCard}>
+    <div className={P.parchaseCard} onClick={() => navigate(`/purchase/${id}`)}>
       <SoldoutCardImg time={time} size="lg" />
 
       <div className={S.soldoutCard__title}>

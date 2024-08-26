@@ -6,6 +6,7 @@ type IconLabelType = {
   backgroundColor: string;
   borderRadius: string;
   text: string;
+  border?: string;
   size?: "sm" | "lg";
   children: React.ReactNode;
 };
@@ -14,6 +15,7 @@ function IconLabel({
   backgroundColor,
   borderRadius,
   text,
+  border,
   size = "sm",
   children,
 }: IconLabelType) {
@@ -28,6 +30,7 @@ function IconLabel({
     display: "flex",
     alignItems: "center",
     gap: "0.25rem",
+    ...(border && { border: `1px solid ${border}` }),
   };
   return (
     <span style={IconLabelStyle}>

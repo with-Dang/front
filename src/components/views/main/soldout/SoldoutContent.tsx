@@ -65,28 +65,26 @@ const SoldoutContent = () => {
       totalPeople: 50,
       people: 48,
     },
-  ]
+  ];
   return (
     <div className={S.soldoutContent}>
-      {
-        data?.map(item => 
-          <React.Fragment key={item.id}>
-            <SoldoutCard 
-              key={item.id}
-              name={item.name}
-              location={item.location}
-              price={item.price}
-              discount={item.discount}
-              time={item.time}
-              totalPeople={item.totalPeople}
-              people={item.people}
-            />
-          </React.Fragment>
-        )
-      }
-      
+      {data?.map((item) => (
+        <React.Fragment key={item.id}>
+          <SoldoutCard
+            key={item.id}
+            id={item.id}
+            name={item.name}
+            location={item.location}
+            price={item.price}
+            discount={item.discount}
+            time={item.time}
+            totalPeople={item.totalPeople}
+            people={item.people}
+          />
+        </React.Fragment>
+      ))}
     </div>
-  )
-}
+  );
+};
 
-export default SoldoutContent
+export default SoldoutContent;

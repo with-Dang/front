@@ -1,0 +1,20 @@
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.stepper__icon {
+  cursor: pointer;
+}
+
+.stepper__num {
+  /* padding: 0.25rem 0.5rem; */
+  border-radius: 3px;
+  box-shadow: 0px 0px 6px 0px rgba(0, 0, 0, 0.3);
+  width: 2.75rem;
+  height: 1.625rem;
+  flex-shrink: 0;
+  line-height: 1.625rem;
+}
