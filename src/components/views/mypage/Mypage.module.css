@@ -1,53 +1,115 @@
 .mypage {
-  width: 90%;
+  /* width: 90%; */
   margin: auto;
   height: 80vh;
   display: flex;
   flex-direction: column;
 }
+
+.mypage__profile__wrapper {
+  position: relative;
+}
+
+.mypage__profile__background {
+  height: 12.88rem;
+  margin-top: -1px;
+  border-radius: 0rem 0rem 1.875rem 1.875rem;
+  background: #469387;
+}
+
+.mypage__top {
+  position: absolute;
+  width: 90%;
+  left: 5%;
+  top: 1.5rem;
+}
+
 .mypage__profile {
   display: flex;
-}
-.mypage__profile div {
-  margin-top: 0.25rem;
-}
-.mypage__info {
-  margin-left: 1rem;
-  margin-right: auto;
-  flex-direction: column;
-  display: flex;
-  align-items: flex-start;
-}
-.mypage__edit {
-  border-radius: 1.25rem;
-  background: #e7ddd4;
-
-  width: 4.4375rem;
-  height: 1.625rem;
+  align-items: center;
 }
 
-.mypage__receipt {
+.mypage__profile__name span:nth-of-type(1) {
+  margin-left: 1.13rem;
+  margin-right: 0.12rem;
+}
+
+.mypage__info__back {
+  margin-top: 1.5rem;
+  height: 10.125rem;
+  border-radius: 0.625rem;
+  background: #fff;
+  box-shadow: 0px 4px 30px 10px rgba(0, 0, 0, 0.1);
+
   display: flex;
   align-items: center;
-  padding: 1.5rem 0;
-  margin: 1.5rem 0;
-  border-bottom: 1px solid #d9d9d9;
-  border-top: 1px solid #d9d9d9;
+  justify-content: center;
 }
-.mypage__receipt span {
-  margin-left: 0.75rem;
+
+.mypage__info {
+  display: flex;
+  flex-direction: column;
+  width: 84%;
+}
+
+.mypage__info__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0.655rem 0;
+}
+
+.mypage__margin {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.mypage__receipt__title {
+  display: flex;
+  margin-top: 5.69rem;
+  margin-bottom: 1.13rem;
+}
+.mypage__receipt__content__back {
+  width: 100%;
+  min-height: 7.1875rem;
+  border-radius: 1.25rem;
+  border: 1px #f2f2f2;
+  background: #fafafa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.12rem;
+  margin-bottom: 1.06rem;
+}
+.mypage__receipt__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.38rem;
+}
+.mypage__receipt__content__back div:nth-of-type(2) {
+  border-left: 1px solid #c6c6c6;
+  border-right: 1px solid #c6c6c6;
+  padding: 0 2.12rem;
+}
+
+.mypage__line {
+  background: #EDEDED;
+  min-height: 0.75rem;
 }
 
 .mypage__menu {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+  margin-top: 2.31rem;
 }
 .mypage__menu div {
   display: flex;
   align-items: center;
   width: 100%;
   margin: 0.75rem 0;
+  padding-bottom: 1.12rem;
+  border-bottom: 1px solid #D9D9D9;
 }
 
 .mypage__control {
@@ -58,4 +120,17 @@
 }
 .mypage__control span {
   margin-top: 0.87rem;
+}
+.backWhite{
+  background-color: #fff;
+}
+@media (min-width: 800px) {
+  .mypage__top {
+    top: 1rem;
+  }
+}
+@media only screen and (max-width: 430px) {
+  .mypage__top {
+    top: 1.5rem;
+  }
 }
