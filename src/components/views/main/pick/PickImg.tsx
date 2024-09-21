@@ -6,6 +6,7 @@ import Text from "../../../atoms/text/Text";
 import S from "./Pick.module.css";
 
 const PickImg = ({ title, intro }: { title: string; intro: string }) => {
+  const introText = intro.length > 30 ? `${intro.slice(0, 30)}...` : intro;
   return (
     <div className={S.pickImg}>
       <Image
@@ -20,7 +21,7 @@ const PickImg = ({ title, intro }: { title: string; intro: string }) => {
           {title}
         </Text>
         <Text color={COLORS.white} fontSize="1rem">
-          {intro}
+          {introText}
         </Text>
       </div>
     </div>

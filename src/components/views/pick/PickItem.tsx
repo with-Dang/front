@@ -20,7 +20,7 @@ function PickItem({ title, address, content, id }: itemprops) {
       : content
     : "";
   const handleDetail = () => {
-    navigate(`/pick/detail?${id}`);
+    navigate(`/pick/detail?detail=${id}`);
   };
   return (
     <div className={S.pickItem}>
