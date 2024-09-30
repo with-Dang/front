@@ -1,41 +1,35 @@
 import { useState } from "react";
-import InputBox from "../../molecules/inputBox/InputBox";
+import { commonApis } from "../../../hook/commonApi";
 
-import { mainLogo } from "../../../assets/png";
-import { COLORS } from "../../../styles/Color";
-import Button from "../../atoms/button/Button";
-import S from "./Login.module.css";
+const apiUrl = "/auth/login";
 
-function Login() {
-  const [id, setId] = useState("");
-  const [pw, setPw] = useState("");
+const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const submitLogin = async () => {
+    const body = {
+      email: email,
+      password: password,
+    };
+    const res = await commonApis.post(apiUrl, body);
+    console.log(res);
+  };
   return (
-    <div className={S.login}>
-      <img src={mainLogo} alt="mainLogo" className={S.login__img} />
-      <form className={S.login__form}>
-        <InputBox
-          isBtn={false}
-          label="아이디"
-          type="text"
-          value={id}
-          onChange={setId}
-        />
-        <InputBox
-          isBtn={false}
-          label="비밀번호"
-          type="password"
-          value={pw}
-          onChange={setPw}
-        />
-      </form>
-      <Button
-        txt="로그인"
-        color={COLORS.white}
-        backgroundColor={COLORS.main}
-        fontSize="1rem"
+    <div>
+      <input
+        type="text"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
       />
+      <input
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+      <button onClick={submitLogin}>로그인</button>
     </div>
   );
-}
+};
 
 export default Login;

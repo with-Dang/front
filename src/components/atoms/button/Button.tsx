@@ -1,33 +1,38 @@
-type ButtonProp = {
-  type?: "button" | "submit" | "reset";
-  txt: string;
+import { ButtonHTMLAttributes } from "react";
+import Text from "../text/Text";
+
+type ButtonType = {
   color: string;
   backgroundColor: string;
+  borderRadius: string;
   fontSize: string;
-};
+  text: string;
+  padding?: string;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
 
-const Button = ({
-  type = "button",
-  txt = "",
+function Button({
   color,
   backgroundColor,
+  borderRadius,
   fontSize,
-}: ButtonProp) => {
+  text,
+  padding = "1rem",
+  ...props
+}: ButtonType) {
   const ButtonStyle: React.CSSProperties = {
-    color: color,
     backgroundColor: backgroundColor,
-    fontSize: fontSize,
-    fontFamily: "NPSfontBold",
-    borderRadius: "20px",
-    border: "none",
+    borderRadius: borderRadius,
+    padding: `${padding} 0`,
     width: "100%",
-    padding: "1.5rem 0",
+    border: "none",
   };
   return (
-    <button type={type} style={ButtonStyle}>
-      {txt}
+    <button type="button" style={ButtonStyle} {...props}>
+      <Text color={color} fontSize={fontSize}>
+        {text}
+      </Text>
     </button>
   );
-};
+}
 
 export default Button;
