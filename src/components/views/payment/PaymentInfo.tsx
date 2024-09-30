@@ -20,6 +20,7 @@ const PaymentInfo = ({
 
   useEffect(() => {
     setPrice(peopleNum + dogNum);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [peopleNum, dogNum]);
 
   return (

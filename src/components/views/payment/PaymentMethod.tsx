@@ -82,6 +82,7 @@ function PaymentMethod({ price = 50000 }: PaymentMethodProps) {
     }
 
     fetchPaymentWidgets();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [clientKey, customerKey]);
 
   useEffect(() => {
@@ -109,6 +110,7 @@ function PaymentMethod({ price = 50000 }: PaymentMethodProps) {
     }
 
     renderPaymentWidgets();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [widgets]);
 
   useEffect(() => {
