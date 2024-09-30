@@ -20,7 +20,7 @@ const Header: React.FC<HeaderProps> = ({
 }) => {
   const navigate = useNavigate();
   const handleBackClick = () => {
-    if (backUrl && backUrl !== "/") {
+    if (backUrl) {
       navigate(backUrl);
     } else {
       navigate(-1);

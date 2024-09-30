@@ -1,0 +1,19 @@
+.login {
+  width: 90%;
+  margin: 0 auto;
+  height: 100dvh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.login__img {
+  width: 15rem;
+}
+
+.login__form {
+  width: 100%;
+}

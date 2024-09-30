@@ -22,7 +22,8 @@
     "react-router-dom": "^6.26.0",
     "react-slick": "^0.30.2",
     "slick-carousel": "^1.8.1",
-    "vite-plugin-next-react-router": "^0.7.1"
+    "vite-plugin-next-react-router": "^0.7.1",
+    "yarn": "^1.22.22"
   },
   "devDependencies": {
     "@types/lodash": "^4.17.7",
