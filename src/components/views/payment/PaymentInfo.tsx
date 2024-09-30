@@ -1,5 +1,5 @@
 import room from "@assets/png/room.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "../../atoms/image/Image";
 import Text from "../../atoms/text/Text";
 import PaymentInfoCount from "./PaymentInfoCount";
@@ -9,12 +9,19 @@ import S from "./Payment.module.css";
 const PaymentInfo = ({
   title,
   location,
+  setPrice,
 }: {
   title: string;
   location: string;
+  setPrice: React.Dispatch<React.SetStateAction<number>>;
 }) => {
   const [peopleNum, setPeopleNum] = useState(0);
   const [dogNum, setDogNum] = useState(0);
+
+  useEffect(() => {
+    setPrice(peopleNum + dogNum);
+  }, [peopleNum, dogNum]);
+
   return (
     <div>
       <div className={S.paymentInfo__header}>
