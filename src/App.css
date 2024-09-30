@@ -40,6 +40,9 @@
     right: 0;
     top: 0.94rem;
   }
+  .purDetail__btn {
+    width: 90%;
+  }
 }
 @media only screen and (min-width: 430px) and (max-width: 800px) {
   html {
@@ -56,6 +59,10 @@
     left: calc(50% - 215px); /* Center the navbar */
     right: calc(50% - 215px); /* Center the navbar */
     /* background-color: black; */
+  }
+  .purDetail__btn {
+    width: 90%;
+    left: calc(50% - 215px);
   }
 }
 
@@ -76,6 +83,10 @@
     right: calc(50% - 300px); /* Center the navbar */
     /* background-color: black; */
     padding: 0.5rem 0;
+  }
+  .purDetail__btn {
+    width: 90%;
+    left: calc(50% - 300px);
   }
 }
 

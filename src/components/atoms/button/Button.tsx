@@ -1,3 +1,4 @@
+import { ButtonHTMLAttributes } from "react";
 import Text from "../text/Text";
 
 type ButtonType = {
@@ -6,25 +7,27 @@ type ButtonType = {
   borderRadius: string;
   fontSize: string;
   text: string;
-  onClick: () => void;
-};
+  padding?: string;
+} & ButtonHTMLAttributes<HTMLButtonElement>;
+
 function Button({
   color,
   backgroundColor,
   borderRadius,
   fontSize,
   text,
-  onClick,
+  padding = "1rem",
+  ...props
 }: ButtonType) {
   const ButtonStyle: React.CSSProperties = {
     backgroundColor: backgroundColor,
     borderRadius: borderRadius,
-    padding: "1rem 0",
+    padding: `${padding} 0`,
     width: "100%",
     border: "none",
   };
   return (
-    <button type="button" onClick={onClick} style={ButtonStyle}>
+    <button type="button" style={ButtonStyle} {...props}>
       <Text color={color} fontSize={fontSize}>
         {text}
       </Text>

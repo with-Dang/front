@@ -15,7 +15,13 @@ const SoldoutCardImg = ({
 }) => {
   return (
     <div className={S.soldoutCard__label}>
-      <Image src={room} width="100%" height="auto" borderRadius="7px" />
+      <Image
+        src={room}
+        width="100%"
+        height="auto"
+        borderRadius="7px"
+        ratio={1}
+      />
       <span className={S.soldoutCard__time}>
         <IconLabel
           color={COLORS.white}

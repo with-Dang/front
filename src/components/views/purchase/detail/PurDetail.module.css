@@ -35,3 +35,42 @@
   height: 1px;
   background-color: var(--line, #777);
 }
+
+/* purDetail */
+
+.purDetail {
+  width: 100%;
+}
+
+.purDetail__btn__container {
+  width: 100%;
+  /* position: relative; */
+}
+
+.purDetail__btn {
+  position: fixed;
+  /* width: inherit; */
+  bottom: 1.5rem;
+  left: 0;
+}
+
+@media only screen and (max-width: 430px) {
+  .purDetail__btn {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 430px) and (max-width: 800px) {
+  .purDetail__btn {
+    width: 100%;
+    max-width: 430px;
+    left: calc(50% - 215px);
+  }
+}
+
+@media (min-width: 800px) {
+  .purDetail__btn {
+    width: 90%;
+    max-width: 600px;
+    left: calc(50% - 300px);
+  }
+}
