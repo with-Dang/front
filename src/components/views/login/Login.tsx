@@ -1,33 +1,54 @@
 import { useState } from "react";
-import { commonApis } from "../../../hook/commonApi";
+import { mainLogo } from "../../../assets/png";
+import { COLORS } from "../../../styles/Color";
+import Button from "../../UI/atoms/button/Button";
+import InputBox from "../../UI/molecules/inputBox/InputBox";
 
-const apiUrl = "/auth/login";
+import { useLoginMutation } from "../../../hook/login/useLoginMutation";
+import S from "./Login.module.css";
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { mutate } = useLoginMutation();
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [disabled, setDisabled] = useState(false);
 
-  const submitLogin = async () => {
-    const body = {
-      email: email,
-      password: password,
-    };
-    const res = await commonApis.post(apiUrl, body);
-    console.log(res);
+  const submitLogin = () => {
+    mutate({
+      email,
+      password,
+    });
+    // console.log("🚀 ~ submitLogin ~ res:", res);
+    setDisabled(true);
   };
+
   return (
-    <div>
-      <input
-        type="text"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+    <div className={S.login}>
+      <img src={mainLogo} alt="logo" className={S.login__img} />
+      <form className={S.login__form}>
+        <InputBox
+          isBtn={false}
+          label="이메일"
+          type="email"
+          value={email}
+          onChange={setEmail}
+        />
+        <InputBox
+          isBtn={false}
+          label="비밀번호"
+          type="password"
+          value={password}
+          onChange={setPassword}
+        />
+      </form>
+      <Button
+        text="로그인"
+        color={COLORS.white}
+        backgroundColor={COLORS.main}
+        fontSize="1rem"
+        onClick={submitLogin}
+        disabled={disabled}
       />
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={submitLogin}>로그인</button>
     </div>
   );
 };
