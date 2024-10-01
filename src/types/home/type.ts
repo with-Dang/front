@@ -6,6 +6,7 @@ export type SoldoutProps = {
   price: number;
   discount: number;
   time: string;
-  totalPeople?: number;
-  people?: number;
+  totalPeople: number;
+  people: number;
+  productPicture: string;
 };

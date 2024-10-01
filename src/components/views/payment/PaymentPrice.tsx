@@ -1,8 +1,15 @@
 import { COLORS } from "../../../styles/Color";
+import { formatPrice } from "../../../utils/formatPrice";
 import Text from "../../UI/atoms/text/Text";
 import S from "./Payment.module.css";
 
-function PaymentPrice() {
+function PaymentPrice({
+  price,
+  discountRate,
+}: {
+  price: number;
+  discountRate: number;
+}) {
   return (
     <div className={S.paymentPrice}>
       <Text fontSize="1rem">결제금액</Text>
@@ -12,7 +19,7 @@ function PaymentPrice() {
             총 상품 금액
           </Text>
           <Text color={COLORS.gray} fontSize="0.625rem">
-            26,900원
+            {formatPrice(price)}원
           </Text>
         </span>
         <span className={S.paymentPrice__bottom__price}>
@@ -20,7 +27,7 @@ function PaymentPrice() {
             상품 할인
           </Text>
           <Text color={COLORS.red} fontSize="0.625rem">
-            -2,000원
+            -{formatPrice((price * discountRate) / 100)}원
           </Text>
         </span>
       </div>
@@ -30,7 +37,7 @@ function PaymentPrice() {
             총 결제 금액
           </Text>
           <Text color={COLORS.text} fontSize="0.875rem">
-            24,900원
+            {formatPrice((price * (100 - discountRate)) / 100)}원
           </Text>
         </span>
       </div>

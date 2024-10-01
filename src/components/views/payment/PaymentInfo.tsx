@@ -1,33 +1,32 @@
-import room from "@assets/png/room.png";
-import { useEffect, useState } from "react";
 import Image from "../../UI/atoms/image/Image";
 import Text from "../../UI/atoms/text/Text";
 import PaymentInfoCount from "./PaymentInfoCount";
 
+import { useSearchParams } from "react-router-dom";
 import S from "./Payment.module.css";
 
 const PaymentInfo = ({
   title,
   location,
-  setPrice,
-}: {
+  productPicture,
+  price,
+}: // setPrice,
+{
   title: string;
   location: string;
-  setPrice: React.Dispatch<React.SetStateAction<number>>;
+  productPicture: string;
+  price: number;
+  // setPrice: React.Dispatch<React.SetStateAction<number>>;
 }) => {
-  const [peopleNum, setPeopleNum] = useState(0);
-  const [dogNum, setDogNum] = useState(0);
-
-  useEffect(() => {
-    setPrice(peopleNum + dogNum);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [peopleNum, dogNum]);
+  const [searchParams] = useSearchParams();
+  const per = searchParams.get("per");
+  const pet = searchParams.get("pet");
 
   return (
     <div>
       <div className={S.paymentInfo__header}>
         <Image
-          src={room}
+          src={productPicture}
           width="20%"
           height="auto"
           borderRadius="7px"
@@ -42,8 +41,18 @@ const PaymentInfo = ({
           </Text>
         </span>
       </div>
-      <PaymentInfoCount value={peopleNum} setValue={setPeopleNum} />
-      <PaymentInfoCount value={dogNum} setValue={setDogNum} />
+      <PaymentInfoCount
+        value={per ? +per : 0}
+        // setValue={setPeopleNum}
+        title="인원 수"
+        price={+price * (per ? +per : 0)}
+      />
+      <PaymentInfoCount
+        value={pet ? +pet : 0}
+        // setValue={setDogNum}
+        title="마리 수"
+        price={+price * (pet ? +pet : 0)}
+      />
     </div>
   );
 };
