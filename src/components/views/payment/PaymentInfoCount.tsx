@@ -1,16 +1,26 @@
-import Stepper, { StepperType } from "../../UI/atoms/stepper/Stepper";
+import { formatPrice } from "../../../utils/formatPrice";
 import Text from "../../UI/atoms/text/Text";
 
 import S from "./Payment.module.css";
 
-const PaymentInfoCount = ({ value, setValue }: StepperType) => {
+const PaymentInfoCount = ({
+  value,
+  // setValue,
+  title,
+  price,
+}: {
+  value: number;
+  title: string;
+  price: number;
+}) => {
   return (
     <div className={S.paymentInfoCount}>
       <span className={S.paymentInfoCount__front}>
-        <Text fontSize="0.875rem">인원 수</Text>
-        <Stepper value={value} setValue={setValue} />
+        <Text fontSize="0.875rem">{title}</Text>
+        <Text fontSize="0.875rem">{value}</Text>
+        {/* <Stepper value={value} setValue={setValue} /> */}
       </span>
-      <Text fontSize="0.875rem">18,000원</Text>
+      <Text fontSize="0.875rem">{formatPrice(+price)}원</Text>
     </div>
   );
 };

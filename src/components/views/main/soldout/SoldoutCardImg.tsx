@@ -9,15 +9,21 @@ import S from "./Soldout.module.css";
 const SoldoutCardImg = ({
   time,
   size,
+  width = "100%",
+  isFull = false,
+  productPicture,
 }: {
   time: string;
   size?: "sm" | "lg";
+  width?: string;
+  isFull?: boolean;
+  productPicture?: string;
 }) => {
   return (
-    <div className={S.soldoutCard__label}>
+    <div className={isFull ? S.soldoutCard__label : S.soldoutCard__label__full}>
       <Image
-        src={room}
-        width="100%"
+        src={productPicture ?? room}
+        width={width}
         height="auto"
         borderRadius="7px"
         ratio={1}

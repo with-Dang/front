@@ -1,15 +1,25 @@
-import { useState } from "react";
+import { useLocation, useSearchParams } from "react-router-dom";
+import { usePurchaseDetailQuery } from "../../../hook/purchase/usePurchaseDetailQuery";
+import { calculatePrice } from "../../../utils/formatPrice";
 import PaymentInfo from "./PaymentInfo";
 import PaymentMethod from "./PaymentMethod";
 import PaymentPrice from "./PaymentPrice";
 
 function Payment() {
-  const paymentInfoData = {
-    title: "세이보리 홀리데이",
-    location: "울산광역시 가톨릭구 가톨릭동 111-11",
-  };
+  const { pathname } = useLocation();
+  const pathnameList = pathname.split("/");
+  const [searchParams] = useSearchParams();
+  const per = searchParams.get("per");
+  const pet = searchParams.get("pet");
+  const totalCnt = +(per ?? 0) + +(pet ?? 0);
 
-  const [price, setPrice] = useState(0);
+  const { data: detailData } = usePurchaseDetailQuery(
+    +pathnameList[pathnameList.length - 1]
+  );
+  const { price, discountRate } = detailData;
+
+  // const [price, setPrice] = useState(0);
+  const totalPrice = totalCnt * +calculatePrice(discountRate ?? 0, price ?? 0);
 
   // const handlePayment = () => {
   //   console.log("결제하기");
@@ -19,12 +29,16 @@ function Payment() {
     <div style={{ margin: "0 auto", width: "90%", paddingTop: "2.75rem" }}>
       <div>
         <PaymentInfo
-          title={paymentInfoData.title}
-          location={paymentInfoData.location}
-          setPrice={setPrice}
+          title={detailData?.productName ?? ""}
+          location={detailData?.address ?? ""}
+          productPicture={detailData?.productPicture ?? ""}
+          price={detailData?.price ?? 0}
         />
-        <PaymentMethod price={price} />
-        <PaymentPrice />
+        <PaymentMethod price={totalPrice} />
+        <PaymentPrice
+          price={totalPrice}
+          discountRate={detailData?.discountRate}
+        />
       </div>
       {/* <Button
         color={COLORS.white}

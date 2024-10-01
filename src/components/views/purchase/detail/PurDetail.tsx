@@ -1,17 +1,21 @@
 import { COLORS } from "../../../../styles/Color";
 import Button from "../../../UI/atoms/button/Button";
-import { PurDetailData } from "./PurDetail.const";
 import PurDetailInfo from "./PurDetailInfo";
 import PurDetailMain from "./PurDetailMain";
-import PurDetailMap from "./PurDetailMap";
 
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
+import { usePurchaseDetailQuery } from "../../../../hook/purchase/usePurchaseDetailQuery";
 import BottomSheet from "../../../UI/organisms/bottomSheet/BottomSheet";
 import S from "./PurDetail.module.css";
 
 const PurDetail = () => {
-  const { id, name, location, price, rate, people, totalPeople } =
-    PurDetailData;
+  const { pathname } = useLocation();
+  const pathnameList = pathname.split("/");
+
+  const { data: detailData } = usePurchaseDetailQuery(
+    +pathnameList[pathnameList.length - 1]
+  );
 
   const [sheetOpen, setSheetOpen] = useState(false);
   const toggleSheetOpen = () => setSheetOpen((prev) => !prev);
@@ -20,15 +24,16 @@ const PurDetail = () => {
     <div className={S.purDetail}>
       <div>
         <PurDetailMain
-          id={id}
-          name={name}
-          location={location}
-          price={price}
-          rate={rate}
-          people={people}
-          totalPeople={totalPeople}
+          id={detailData?.id ?? 0}
+          name={detailData?.productName ?? ""}
+          location={detailData?.address ?? ""}
+          price={detailData?.price ?? 0}
+          rate={detailData?.discountRate ?? 0}
+          people={detailData?.currentPersonnel ?? 0}
+          totalPeople={detailData?.closePersonnel ?? 0}
+          productPicture={detailData?.productPicture ?? ""}
         />
-        <PurDetailMap />
+        {/* <PurDetailMap /> */}
         <PurDetailInfo />
       </div>
       <div className={S.purDetail__btn__container}>
@@ -43,7 +48,9 @@ const PurDetail = () => {
           className={S.purDetail__btn}
         />
       </div>
-      {sheetOpen && <BottomSheet onClick={toggleSheetOpen} />}
+      {sheetOpen && (
+        <BottomSheet onClick={toggleSheetOpen} id={detailData?.id ?? 0} />
+      )}
     </div>
   );
 };

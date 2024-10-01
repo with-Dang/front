@@ -15,6 +15,10 @@
   justify-content: space-between;
 }
 
+.purDetailMain__content__title {
+  text-align: left;
+}
+
 .purDetailMain__content__price > span {
   margin-right: 0.5rem;
 }

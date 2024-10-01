@@ -14,10 +14,10 @@ function Stepper({ value, setValue }: StepperType) {
   const handleNum = (type: boolean) => () => {
     if (type) {
       // +
-      setValue((prev) => prev + 1);
+      setValue((prev) => +prev + 1);
     } else {
       //  -
-      setValue((prev) => (prev === 0 ? 0 : prev - 1));
+      setValue((prev) => (prev === 0 ? 0 : +prev - 1));
     }
   };
   return (

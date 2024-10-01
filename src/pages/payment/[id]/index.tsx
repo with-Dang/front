@@ -1,5 +1,5 @@
-import Header from "../../components/UI/organisms/header/Header";
-import Payment from "../../components/views/payment/Payment";
+import Header from "../../../components/UI/organisms/header/Header";
+import Payment from "../../../components/views/payment/Payment";
 
 function index() {
   return (
