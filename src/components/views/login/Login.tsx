@@ -1,54 +1,49 @@
-import { useState } from "react";
 import { mainLogo } from "../../../assets/png";
 import { COLORS } from "../../../styles/Color";
 import Button from "../../UI/atoms/button/Button";
 import InputBox from "../../UI/molecules/inputBox/InputBox";
 
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useLoginMutation } from "../../../hook/login/useLoginMutation";
+import { SignUpFormValues } from "../signUp/SignUp";
 import S from "./Login.module.css";
+
+export type LoginFormValues = {
+  email: string;
+  password: string;
+};
 
 const Login = () => {
   const { mutate } = useLoginMutation();
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [disabled, setDisabled] = useState(false);
+  const { register, handleSubmit } = useForm<SignUpFormValues>();
+  const onSubmit: SubmitHandler<SignUpFormValues> = (data) => mutate(data);
 
-  const submitLogin = () => {
-    mutate({
-      email,
-      password,
-    });
-    // console.log("🚀 ~ submitLogin ~ res:", res);
-    setDisabled(true);
-  };
+  // const [disabled, setDisabled] = useState(false);
 
   return (
     <div className={S.login}>
       <img src={mainLogo} alt="logo" className={S.login__img} />
-      <form className={S.login__form}>
+      <form onSubmit={handleSubmit(onSubmit)} className={S.login__form}>
         <InputBox
           isBtn={false}
           label="이메일"
           type="email"
-          value={email}
-          onChange={setEmail}
+          register={register("email")}
         />
         <InputBox
           isBtn={false}
           label="비밀번호"
           type="password"
-          value={password}
-          onChange={setPassword}
+          register={register("password")}
+        />
+        <Button
+          text="로그인"
+          color={COLORS.white}
+          backgroundColor={COLORS.main}
+          fontSize="1rem"
+          type="submit"
         />
       </form>
-      <Button
-        text="로그인"
-        color={COLORS.white}
-        backgroundColor={COLORS.main}
-        fontSize="1rem"
-        onClick={submitLogin}
-        disabled={disabled}
-      />
     </div>
   );
 };

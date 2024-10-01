@@ -1,38 +1,30 @@
+import { UseFormRegisterReturn } from "react-hook-form";
 import Text from "../text/Text";
 import S from "./Input.module.css";
 
 type InputProp = {
   isBtn: boolean;
-  value: string;
-  onChange: React.Dispatch<React.SetStateAction<string>>;
   type: string;
   button?: string;
+  register: UseFormRegisterReturn;
 };
 
 const Input = ({
   isBtn = false,
-  value = "",
-  onChange,
   type = "text",
   button = "중복확인",
+  register,
 }: InputProp) => {
   return (
     <>
       {!isBtn ? (
-        <input
-          value={value}
-          type={type}
-          className={S.input}
-          onChange={(e) => onChange(e.target.value)}
-          required
-        />
+        <input type={type} className={S.input} {...register} required />
       ) : (
         <span className={S.input__container}>
           <input
-            value={value}
             type={type}
             className={`${S.input} ${S.input__empty}`}
-            onChange={(e) => onChange(e.target.value)}
+            {...register}
             required
           />
           <button type="button" className={S.button}>

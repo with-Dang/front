@@ -1,62 +1,75 @@
-import { useState } from "react";
 import { COLORS } from "../../../styles/Color";
 import Button from "../../UI/atoms/button/Button";
+import Text from "../../UI/atoms/text/Text";
 import InputBox from "../../UI/molecules/inputBox/InputBox";
 
-import Text from "../../UI/atoms/text/Text";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { useSignUpMutation } from "../../../hook/signup/useSignUpMutation";
 import S from "./SignUp.module.css";
 
+export type SignUpFormValues = {
+  id: string;
+  email: string;
+  nickname: string;
+  password: string;
+  passwordChk: string;
+  phone: string;
+};
+
 const SignUp = () => {
-  const [id, setId] = useState("");
-  const [pw, setPw] = useState("");
+  const { register, handleSubmit } = useForm<SignUpFormValues>();
+  const { mutate } = useSignUpMutation();
+  const onSubmit: SubmitHandler<SignUpFormValues> = (data) => mutate(data);
+
   return (
     <div className={S.signup}>
       <Text fontSize="1.5rem">회원가입</Text>
-      <form className={S.signup__form}>
+      <form onSubmit={handleSubmit(onSubmit)} className={S.signup__form}>
         <InputBox
           isBtn={true}
           label="아이디"
           type="text"
-          value={id}
-          onChange={setId}
+          register={register("id")}
           // button="중복확인"
         />
         <InputBox
           isBtn={false}
           label="이메일"
           type="email"
-          value={pw}
-          onChange={setPw}
+          register={register("email")}
+        />
+        <InputBox
+          isBtn={false}
+          label="닉네임"
+          type="type"
+          register={register("nickname")}
         />
         <InputBox
           isBtn={false}
           label="비밀번호"
           type="password"
-          value={pw}
-          onChange={setPw}
+          register={register("password")}
         />
         <InputBox
           isBtn={false}
           label="비밀번호 확인"
           type="password"
-          value={pw}
-          onChange={setPw}
+          register={register("passwordChk")}
         />
         <InputBox
           isBtn={false}
           label="휴대폰 번호"
           type="phone"
-          value={pw}
-          onChange={setPw}
+          register={register("phone")}
+        />
+        <Button
+          text="회원가입"
+          color={COLORS.white}
+          backgroundColor={COLORS.main}
+          fontSize="1rem"
+          type="submit"
         />
       </form>
-      <Button
-        text="회원가입"
-        color={COLORS.white}
-        backgroundColor={COLORS.main}
-        borderRadius=""
-        fontSize="1rem"
-      />
     </div>
   );
 };
