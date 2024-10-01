@@ -1,4 +1,4 @@
-import { COLORS } from "../../../styles/Color";
+import { COLORS } from "../../../../styles/Color";
 import Text from "../text/Text";
 
 import S from "./Chip.module.css";

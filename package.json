@@ -12,9 +12,12 @@
   },
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",
+    "@tanstack/react-query": "^5.56.2",
+    "@tanstack/react-query-devtools": "^5.58.0",
     "@tosspayments/tosspayments-sdk": "^2.3.2",
     "@types/node": "^22.2.0",
     "@types/react-router-dom": "^5.3.3",
+    "antd": "^5.21.2",
     "axios": "^1.7.7",
     "dayjs": "^1.11.12",
     "lodash": "^4.17.21",

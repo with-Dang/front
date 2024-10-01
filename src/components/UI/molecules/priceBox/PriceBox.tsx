@@ -1,5 +1,5 @@
-import { COLORS } from "../../../styles/Color";
-import { formatNumber } from "../../../utils/formatNumber";
+import { COLORS } from "../../../../styles/Color";
+import { formatNumber } from "../../../../utils/formatNumber";
 import Text from "../../atoms/text/Text";
 import S from "./PriveBox.module.css";
 function PriceBox({

@@ -1,7 +1,7 @@
 import room from "@assets/png/room.png";
 import React from "react";
-import Image from "../../../../atoms/image/Image";
-import Text from "../../../../atoms/text/Text";
+import Image from "../../../../UI/atoms/image/Image";
+import Text from "../../../../UI/atoms/text/Text";
 import styles from "./MapCard.module.css";
 
 type MapCardItemProps = {

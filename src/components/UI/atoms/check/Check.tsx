@@ -1,6 +1,6 @@
 import { IoCheckmark } from "@react-icons/all-files/io5/IoCheckmark";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { COLORS } from "../../../styles/Color";
+import { COLORS } from "../../../../styles/Color";
 import Text from "../text/Text";
 import S from "./Check.module.css";
 

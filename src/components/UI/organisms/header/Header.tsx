@@ -2,8 +2,8 @@
 import { GoChevronLeft } from "@react-icons/all-files/go/GoChevronLeft";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import "../../../App.css";
-import { logo, mainLogo } from "../../../assets/png";
+import "../../../../App.css";
+import { logo, mainLogo } from "../../../../assets/png";
 import S from "./Header.module.css";
 
 type HeaderProps = {

@@ -1,6 +1,6 @@
 import React from "react";
 import { COLORS } from "../../../styles/Color";
-import Text from "../../atoms/text/Text";
+import Text from "../../UI/atoms/text/Text";
 import S from "./Pick.module.css";
 import PickItem from "./PickItem";
 

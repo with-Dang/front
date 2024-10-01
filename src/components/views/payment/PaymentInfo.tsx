@@ -1,7 +1,7 @@
 import room from "@assets/png/room.png";
 import { useEffect, useState } from "react";
-import Image from "../../atoms/image/Image";
-import Text from "../../atoms/text/Text";
+import Image from "../../UI/atoms/image/Image";
+import Text from "../../UI/atoms/text/Text";
 import PaymentInfoCount from "./PaymentInfoCount";
 
 import S from "./Payment.module.css";

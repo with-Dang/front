@@ -1,6 +1,6 @@
 import { COLORS } from "../../../../styles/Color";
 import { formatNumber } from "../../../../utils/formatNumber";
-import Text from "../../../atoms/text/Text";
+import Text from "../../../UI/atoms/text/Text";
 import S from "./PaymentHistoryPriceBox.module.css";
 
 type PriceBoxProps = {

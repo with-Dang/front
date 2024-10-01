@@ -1,5 +1,5 @@
 import { COLORS } from "../../../../styles/Color";
-import RouterLabel from "../../../molecules/routerLabel/RouterLabel";
+import RouterLabel from "../../../UI/molecules/routerLabel/RouterLabel";
 import SoldoutContent from "./SoldoutContent";
 
 import S from "./Soldout.module.css";

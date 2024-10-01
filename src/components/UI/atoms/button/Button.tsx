@@ -4,7 +4,7 @@ import Text from "../text/Text";
 type ButtonType = {
   color: string;
   backgroundColor: string;
-  borderRadius: string;
+  borderRadius?: string;
   fontSize: string;
   text: string;
   padding?: string;
@@ -13,7 +13,7 @@ type ButtonType = {
 function Button({
   color,
   backgroundColor,
-  borderRadius,
+  borderRadius = "16px",
   fontSize,
   text,
   padding = "1rem",

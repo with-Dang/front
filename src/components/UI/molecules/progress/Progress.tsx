@@ -1,5 +1,5 @@
 import { CSSProperties, useEffect, useState } from "react";
-import { COLORS } from "../../../styles/Color";
+import { COLORS } from "../../../../styles/Color";
 import Text from "../../atoms/text/Text";
 import S from "./Progress.module.css";
 

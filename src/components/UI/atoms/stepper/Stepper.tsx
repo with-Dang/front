@@ -2,7 +2,7 @@ import { AiFillMinusCircle } from "@react-icons/all-files/ai/AiFillMinusCircle";
 import { AiFillPlusCircle } from "@react-icons/all-files/ai/AiFillPlusCircle";
 import Text from "../text/Text";
 
-import { COLORS } from "../../../styles/Color";
+import { COLORS } from "../../../../styles/Color";
 import S from "./Stepper.module.css";
 
 export type StepperType = {

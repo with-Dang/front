@@ -1,7 +1,7 @@
 import room from "@assets/png/room.png";
 import { COLORS } from "../../../../styles/Color";
-import Image from "../../../atoms/image/Image";
-import Text from "../../../atoms/text/Text";
+import Image from "../../../UI/atoms/image/Image";
+import Text from "../../../UI/atoms/text/Text";
 
 import S from "./Pick.module.css";
 

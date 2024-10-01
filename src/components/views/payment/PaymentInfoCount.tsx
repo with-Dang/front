@@ -1,5 +1,5 @@
-import Stepper, { StepperType } from "../../atoms/stepper/Stepper";
-import Text from "../../atoms/text/Text";
+import Stepper, { StepperType } from "../../UI/atoms/stepper/Stepper";
+import Text from "../../UI/atoms/text/Text";
 
 import S from "./Payment.module.css";
 

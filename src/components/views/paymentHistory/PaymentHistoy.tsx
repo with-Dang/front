@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { COLORS } from "../../../styles/Color";
-import Text from "../../atoms/text/Text";
+import Text from "../../UI/atoms/text/Text";
 import { PaymentHistoryCard } from "./components/PaymentHistoryCard";
 import {
   PAYMENTHISTORY,

@@ -5,8 +5,8 @@ import {
 import { useEffect, useState } from "react";
 import useRequestPayment from "../../../hook/payment/useRequestPayment";
 import { COLORS } from "../../../styles/Color";
-import Button from "../../atoms/button/Button";
-import Text from "../../atoms/text/Text";
+import Button from "../../UI/atoms/button/Button";
+import Text from "../../UI/atoms/text/Text";
 import S from "./Payment.module.css";
 
 const clientKey = "test_gck_mBZ1gQ4YVXW95donJ2BZ3l2KPoqN";

@@ -1,5 +1,5 @@
-import Check from "../../atoms/check/Check";
-import ChipBox from "../../molecules/chipBox/ChipBox";
+import Check from "../../UI/atoms/check/Check";
+import ChipBox from "../../UI/molecules/chipBox/ChipBox";
 import Search from "./Search";
 
 import S from "./Purchase.module.css";

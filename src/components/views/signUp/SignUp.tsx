@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { COLORS } from "../../../styles/Color";
-import Button from "../../atoms/button/Button";
-import InputBox from "../../molecules/inputBox/InputBox";
+import Button from "../../UI/atoms/button/Button";
+import InputBox from "../../UI/molecules/inputBox/InputBox";
 
-import Text from "../../atoms/text/Text";
+import Text from "../../UI/atoms/text/Text";
 import S from "./SignUp.module.css";
 
 const SignUp = () => {
@@ -51,9 +51,10 @@ const SignUp = () => {
         />
       </form>
       <Button
-        txt="회원가입"
+        text="회원가입"
         color={COLORS.white}
         backgroundColor={COLORS.main}
+        borderRadius=""
         fontSize="1rem"
       />
     </div>

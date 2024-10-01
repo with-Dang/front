@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { testStores } from "../../../pages/map/testConstant";
-import { MapChipBox } from "../../molecules/mapChipBox/MapChipBox";
-import Header from "../../organisms/header/Header";
+import { MapChipBox } from "../../UI/molecules/mapChipBox/MapChipBox";
+import Header from "../../UI/organisms/header/Header";
 import { CreateMap } from "./components/CreateMap";
 import S from "./MapPage.module.css";
 

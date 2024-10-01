@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { COLORS } from "../../../styles/Color";
+import { COLORS } from "../../../../styles/Color";
 import Button from "../../atoms/button/Button";
 import Stepper from "../../atoms/stepper/Stepper";
 import Text from "../../atoms/text/Text";

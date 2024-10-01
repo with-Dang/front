@@ -1,4 +1,4 @@
-import Header from "../../components/organisms/header/Header";
+import Header from "../../components/UI/organisms/header/Header";
 import SignUp from "../../components/views/signUp/SignUp";
 
 function index() {
