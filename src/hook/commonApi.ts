@@ -1,6 +1,6 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
-import { useSelector } from "react-redux";
-import { RootState } from "../redux/store";
+import store from "../redux/store";
 
 export const axiosInstance = axios.create({
   baseURL: import.meta.env.VITE_API_URL + "/api/v1",
@@ -37,7 +37,7 @@ export const commonApis: HttpClient = axiosInstance;
 // TODO: token 빼기
 axiosInstance.interceptors.request.use(
   async (config) => {
-    const token = useSelector((state: RootState) => state.auth.session);
+    const token = store.getState().auth.session;
     console.log("🚀 ~ token:", token);
 
     if (token) {
