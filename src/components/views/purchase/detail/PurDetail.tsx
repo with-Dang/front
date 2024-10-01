@@ -1,12 +1,12 @@
 import { COLORS } from "../../../../styles/Color";
-import Button from "../../../atoms/button/Button";
+import Button from "../../../UI/atoms/button/Button";
 import { PurDetailData } from "./PurDetail.const";
 import PurDetailInfo from "./PurDetailInfo";
 import PurDetailMain from "./PurDetailMain";
 import PurDetailMap from "./PurDetailMap";
 
 import { useState } from "react";
-import BottomSheet from "../../../organisms/bottomSheet/BottomSheet";
+import BottomSheet from "../../../UI/organisms/bottomSheet/BottomSheet";
 import S from "./PurDetail.module.css";
 
 const PurDetail = () => {

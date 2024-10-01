@@ -1,9 +1,9 @@
 import room from "@assets/png/room.png";
 import { IoPersonCircle } from "@react-icons/all-files/io5/IoPersonCircle";
 import { COLORS } from "../../../../styles/Color";
-import IconLabel from "../../../atoms/iconLabel/IconLabel";
-import Image from "../../../atoms/image/Image";
-import Text from "../../../atoms/text/Text";
+import IconLabel from "../../../UI/atoms/iconLabel/IconLabel";
+import Image from "../../../UI/atoms/image/Image";
+import Text from "../../../UI/atoms/text/Text";
 
 import S from "./PurDetail.module.css";
 

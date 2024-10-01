@@ -1,5 +1,5 @@
 import { COLORS } from "../../../styles/Color";
-import Text from "../../atoms/text/Text";
+import Text from "../../UI/atoms/text/Text";
 import S from "./Payment.module.css";
 
 function PaymentPrice() {

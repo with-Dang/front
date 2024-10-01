@@ -1,10 +1,9 @@
 import { COLORS } from "../../../styles/Color";
 import { SoldoutProps } from "../../../types/home";
-import Text from "../../atoms/text/Text";
+import Text from "../../UI/atoms/text/Text";
 import SoldoutCardImg from "../main/soldout/SoldoutCardImg";
 
 import { useNavigate } from "react-router-dom";
-import Progress from "../../molecules/progress/Progress";
 import S from "../main/soldout/Soldout.module.css";
 import P from "./Purchase.module.css";
 
@@ -15,9 +14,9 @@ const PurchaseCard = ({
   price,
   discount,
   time,
-  totalPeople,
-  people,
-}: SoldoutProps) => {
+}: // totalPeople,
+// people,
+SoldoutProps) => {
   const navigate = useNavigate();
   return (
     <div className={P.parchaseCard} onClick={() => navigate(`/purchase/${id}`)}>
@@ -40,7 +39,7 @@ const PurchaseCard = ({
         </Text>
       </div>
 
-      <Progress currentNum={people} totalNum={totalPeople} />
+      {/* <Progress currentNum={people} totalNum={totalPeople} /> */}
     </div>
   );
 };

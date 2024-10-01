@@ -1,0 +1,11 @@
+.inputBox {
+  width: 100%;
+
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* text-align: left; */
+  gap: 0.5rem;
+  padding: 1.5rem 0;
+}

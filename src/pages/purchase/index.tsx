@@ -1,4 +1,4 @@
-import Header from "../../components/organisms/header/Header";
+import Header from "../../components/UI/organisms/header/Header";
 import PurchaseContent from "../../components/views/purchase/PurchaseContent";
 import PurchaseHeader from "../../components/views/purchase/PurchaseHeader";
 

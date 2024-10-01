@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import room from "../../../../assets/png/room.png";
 import { COLORS } from "../../../../styles/Color";
-import Image from "../../../atoms/image/Image";
-import Text from "../../../atoms/text/Text";
-import PriceBox from "../../../molecules/priceBox/PriceBox";
-import RouterLabel from "../../../molecules/routerLabel/RouterLabel";
+import Image from "../../../UI/atoms/image/Image";
+import Text from "../../../UI/atoms/text/Text";
+import PriceBox from "../../../UI/molecules/priceBox/PriceBox";
+import RouterLabel from "../../../UI/molecules/routerLabel/RouterLabel";
 import S from "./PaymentHistoryCard.module.css";
 
 type paymentHistoryCardProps = {

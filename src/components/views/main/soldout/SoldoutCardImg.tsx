@@ -1,8 +1,8 @@
 import room from "@assets/png/room.png";
 import { IoMdTime } from "@react-icons/all-files/io/IoMdTime";
 import { COLORS } from "../../../../styles/Color";
-import IconLabel from "../../../atoms/iconLabel/IconLabel";
-import Image from "../../../atoms/image/Image";
+import IconLabel from "../../../UI/atoms/iconLabel/IconLabel";
+import Image from "../../../UI/atoms/image/Image";
 
 import S from "./Soldout.module.css";
 

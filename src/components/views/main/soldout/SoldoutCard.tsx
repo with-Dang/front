@@ -1,8 +1,8 @@
 import { IoPersonCircle } from "@react-icons/all-files/io5/IoPersonCircle";
-import Text from "../../../../components/atoms/text/Text";
 import { COLORS } from "../../../../styles/Color";
 import { SoldoutProps } from "../../../../types/home";
-import IconLabel from "../../../atoms/iconLabel/IconLabel";
+import IconLabel from "../../../UI/atoms/iconLabel/IconLabel";
+import Text from "../../../UI/atoms/text/Text";
 import SoldoutCardImg from "./SoldoutCardImg";
 
 import S from "./Soldout.module.css";

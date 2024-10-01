@@ -1,4 +1,4 @@
-import Header from "../../components/organisms/header/Header";
+import Header from "../../components/UI/organisms/header/Header";
 import Mypage from "../../components/views/mypage/Mypage";
 
 function index() {
@@ -8,7 +8,7 @@ function index() {
         style={{
           paddingBottom: "2px",
           backgroundColor: "#469387",
-          overflowY: "auto"
+          overflowY: "auto",
         }}
       >
         <Header backIcon={true} logoIcon="logo" />

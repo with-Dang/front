@@ -1,0 +1,40 @@
+.input {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-bottom: 1px solid #d9d9d9;
+  box-sizing: border-box;
+  transition: border-bottom 0.3s ease;
+}
+
+.input:focus {
+  outline: none;
+  border-bottom: 1px solid #8a8a8a;
+}
+
+.input__empty {
+  border: none;
+}
+
+.input__empty:focus {
+  border: none;
+  outline: none;
+}
+
+.input__container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.button {
+  width: 30%;
+  background-color: #2b2b2b;
+  color: #fff;
+  border-radius: 10px;
+  border: none;
+  padding: 0.75rem 0;
+  letter-spacing: 0.125rem;
+}

@@ -2,9 +2,9 @@ import room from "@assets/png/room.png";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { COLORS } from "../../../styles/Color";
-import Image from "../../atoms/image/Image";
-import Text from "../../atoms/text/Text";
-import RouterLabel from "../../molecules/routerLabel/RouterLabel";
+import Image from "../../UI/atoms/image/Image";
+import Text from "../../UI/atoms/text/Text";
+import RouterLabel from "../../UI/molecules/routerLabel/RouterLabel";
 import S from "./Mypage.module.css";
 import { MYPAGECONSTANTS } from "./constants";
 
