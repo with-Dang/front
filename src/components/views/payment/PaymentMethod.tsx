@@ -25,7 +25,7 @@ function PaymentMethod({ price = 50000 }: PaymentMethodProps) {
   // const [ready, setReady] = useState(false);
   const [widgets, setWidgets] = useState<TossPaymentsWidgets | null>(null);
 
-  const requestPayment = useRequestPayment();
+  const { mutate: requestPayment } = useRequestPayment();
 
   const paymentRequest = () => {
     // const paymentWidget = paymentWidgetRef.current;

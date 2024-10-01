@@ -31,7 +31,6 @@ export function useSignUpMutation() {
     onSuccess: (data) => {
       console.log(data);
       // TODO: 성공 알림
-      // message.success
       navitgate("/login"); // 홈화면으로 이동
     },
     onError: (error) => {

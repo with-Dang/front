@@ -14,9 +14,9 @@ export type LoginFormValues = {
 };
 
 const Login = () => {
-  const { mutate } = useLoginMutation();
+  const { mutate: loginMutate } = useLoginMutation();
   const { register, handleSubmit } = useForm<SignUpFormValues>();
-  const onSubmit: SubmitHandler<SignUpFormValues> = (data) => mutate(data);
+  const onSubmit: SubmitHandler<SignUpFormValues> = (data) => loginMutate(data);
 
   // const [disabled, setDisabled] = useState(false);
 
