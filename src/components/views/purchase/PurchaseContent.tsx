@@ -1,12 +1,13 @@
-import PurchaseCard from "./PurchaseCard";
-
 import React from "react";
 import { useSearchParams } from "react-router-dom";
 import S from "./Purchase.module.css";
+import PurchaseCard from "./PurchaseCard";
 
 const PurchaseContent = () => {
   const [searchParams] = useSearchParams();
   const category = searchParams.get("category");
+  // const { data } = usePurchaseQuery();
+  // console.log("🚀 ~ PurchaseContent ~ data:", data);
   const data = [
     {
       id: 0,
@@ -85,12 +86,12 @@ const PurchaseContent = () => {
               key={item.id}
               id={item.id}
               name={item.name}
-              location={item.location}
+              // location={item.location}
               price={item.price}
               discount={item.discount}
               time={item.time}
-              totalPeople={item.totalPeople}
-              people={item.people}
+              // totalPeople={item.totalPeople}
+              // people={item.people}
             />
           </React.Fragment>
         ))}
