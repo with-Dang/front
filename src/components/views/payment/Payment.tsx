@@ -16,10 +16,11 @@ function Payment() {
   const { data: detailData } = usePurchaseDetailQuery(
     +pathnameList[pathnameList.length - 1]
   );
-  const { price, discountRate } = detailData;
 
   // const [price, setPrice] = useState(0);
-  const totalPrice = totalCnt * +calculatePrice(discountRate ?? 0, price ?? 0);
+  const totalPrice =
+    totalCnt *
+    +calculatePrice(detailData?.discountRate ?? 0, detailData?.price ?? 0);
 
   // const handlePayment = () => {
   //   console.log("결제하기");
@@ -37,7 +38,7 @@ function Payment() {
         <PaymentMethod price={totalPrice} />
         <PaymentPrice
           price={totalPrice}
-          discountRate={detailData?.discountRate}
+          discountRate={detailData?.discountRate ?? 0}
         />
       </div>
       {/* <Button
