@@ -11,7 +11,7 @@ const Pick = () => {
         color={COLORS.text}
         fontSize="1.25rem"
         fontWeight="700"
-        url="/login"
+        url="/pick"
       />
       <PickContent />
     </div>
