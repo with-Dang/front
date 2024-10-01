@@ -22,16 +22,44 @@ function PaymentMethod({ price = 50000 }: PaymentMethodProps) {
     currency: "KRW",
     value: 50_000,
   });
-  // const [ready, setReady] = useState(false);
+  const [ready, setReady] = useState(false);
   const [widgets, setWidgets] = useState<TossPaymentsWidgets | null>(null);
 
-  const { mutate: requestPayment } = useRequestPayment();
+  const { mutate } = useRequestPayment();
 
-  const paymentRequest = () => {
-    // const paymentWidget = paymentWidgetRef.current;
-    // const paymentMethodsWidget = paymentMethodsWidgetRef.current;
-    requestPayment({ amount: amount.value, paymentWidget: widgets });
-    console.log("paymentWidget: ", widgets);
+  const paymentRequest = async () => {
+    setReady(true); // ready를 true로 설정
+    try {
+      // 결제 요청을 보냄
+      mutate(
+        { amount: amount.value, paymentWidget: widgets },
+        {
+          onSuccess: async ({ data }) => {
+            console.log("🚀 ~ onSuccess: ~ data:", data);
+            // 결제 요청이 성공하면 paymentWidget 로직 실행
+            if (widgets && data.orderId) {
+              try {
+                console.log("🚀 ~ paymentRequest ~ paymentWidget:", widgets);
+                await widgets.requestPayment(data); // paymentWidget 요청 실행
+              } catch (error) {
+                console.error("Error during payment widget request:", error);
+                alert(
+                  "결제 위젯 실행 중 오류가 발생했습니다. 다시 시도해 주세요."
+                );
+              }
+            }
+          },
+          onSettled: () => {
+            // 작업이 완료되면 ready를 false로 설정
+            setReady(false);
+          },
+        }
+      );
+    } catch (error) {
+      console.error("Error during payment request:", error);
+      alert("결제 요청 중 오류가 발생했습니다. 다시 시도해 주세요.");
+      setReady(false); // 오류 발생 시에도 ready를 false로 설정
+    }
   };
 
   // useEffect(() => {
@@ -138,6 +166,7 @@ function PaymentMethod({ price = 50000 }: PaymentMethodProps) {
           fontSize="1.125rem"
           text="결제하기"
           onClick={paymentRequest}
+          disabled={ready}
         />
         {/* <button
             className="button"

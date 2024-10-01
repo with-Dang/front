@@ -3,7 +3,7 @@ export type SoldoutProps = {
   id: number;
   name: string;
   location?: string;
-  price: string;
+  price: number;
   discount: number;
   time: string;
   totalPeople?: number;
