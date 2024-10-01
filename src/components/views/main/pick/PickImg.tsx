@@ -3,11 +3,25 @@ import { COLORS } from "../../../../styles/Color";
 import Image from "../../../UI/atoms/image/Image";
 import Text from "../../../UI/atoms/text/Text";
 
+import { useNavigate } from "react-router-dom";
 import S from "./Pick.module.css";
 
-const PickImg = ({ title, intro }: { title: string; intro: string }) => {
+const PickImg = ({
+  title,
+  intro,
+  id,
+}: {
+  title: string;
+  intro: string;
+  id: string;
+}) => {
+  const navigate = useNavigate();
+  const handleDetail = () => {
+    navigate(`/pick/detail?detail=${id}`);
+  };
+  const introText = intro.length > 30 ? `${intro.slice(0, 30)}...` : intro;
   return (
-    <div className={S.pickImg}>
+    <div className={S.pickImg} onClick={handleDetail}>
       <Image
         src={room}
         width="100%"
@@ -20,7 +34,7 @@ const PickImg = ({ title, intro }: { title: string; intro: string }) => {
           {title}
         </Text>
         <Text color={COLORS.white} fontSize="1rem">
-          {intro}
+          {introText}
         </Text>
       </div>
     </div>
