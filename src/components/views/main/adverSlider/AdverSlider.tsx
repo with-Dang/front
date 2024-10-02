@@ -1,11 +1,11 @@
-import SampleSlider from "../../../organisms/slider/SampleSlider";
+import SampleSlider from "../../../UI/organisms/slider/SampleSlider";
 
 const AdverSlider = () => {
   return (
     <>
       <SampleSlider />
     </>
-  )
-}
+  );
+};
 
-export default AdverSlider
+export default AdverSlider;

@@ -1,11 +1,20 @@
-import Header from "../../components/organisms/header/Header";
+import Header from "../../components/UI/organisms/header/Header";
 import Mypage from "../../components/views/mypage/Mypage";
 
 function index() {
   return (
     <>
-      <Header backIcon={true} logoIcon="logo" />
+      <div
+        style={{
+          paddingBottom: "2px",
+          backgroundColor: "#469387",
+          overflowY: "auto",
+        }}
+      >
+        <Header backIcon={true} logoIcon="logo" />
+      </div>
       <Mypage />
+      {/* <Nav/> */}
     </>
   );
 }

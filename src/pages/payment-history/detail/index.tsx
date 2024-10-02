@@ -1,9 +1,10 @@
-import Header from "../../../components/organisms/header/Header";
+import Header from "../../../components/UI/organisms/header/Header";
 import PaymentHistoyDetail from "../../../components/views/paymentHistory/PaymentHistoryDetail";
+import { COLORS } from "../../../styles/Color";
 
 function index() {
   return (
-    <div style={{ background: "#469387", height: "100%" }}>
+    <div style={{ background: COLORS.main, height: "100%" }}>
       <Header logoIcon="logo" backIcon={true} />
       <PaymentHistoyDetail />
     </div>

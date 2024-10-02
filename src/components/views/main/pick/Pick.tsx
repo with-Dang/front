@@ -1,5 +1,5 @@
 import { COLORS } from "../../../../styles/Color";
-import RouterLabel from "../../../molecules/routerLabel/RouterLabel";
+import RouterLabel from "../../../UI/molecules/routerLabel/RouterLabel";
 import S from "./Pick.module.css";
 import PickContent from "./PickContent";
 
@@ -11,7 +11,7 @@ const Pick = () => {
         color={COLORS.text}
         fontSize="1.25rem"
         fontWeight="700"
-        url="/login"
+        url="/pick"
       />
       <PickContent />
     </div>

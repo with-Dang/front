@@ -1,10 +1,12 @@
 import { IoPersonCircle } from "@react-icons/all-files/io5/IoPersonCircle";
-import Text from "../../../../components/atoms/text/Text";
 import { COLORS } from "../../../../styles/Color";
 import { SoldoutProps } from "../../../../types/home";
-import IconLabel from "../../../atoms/iconLabel/IconLabel";
+import IconLabel from "../../../UI/atoms/iconLabel/IconLabel";
+import Text from "../../../UI/atoms/text/Text";
 import SoldoutCardImg from "./SoldoutCardImg";
 
+import { useNavigate } from "react-router-dom";
+import { calculatePrice, formatPrice } from "../../../../utils/formatPrice";
 import S from "./Soldout.module.css";
 
 const SoldoutCard = ({
@@ -16,10 +18,20 @@ const SoldoutCard = ({
   time,
   totalPeople,
   people,
+  productPicture,
 }: SoldoutProps) => {
+  const navigate = useNavigate();
   return (
-    <div className={S.soldoutCard} key={id}>
-      <SoldoutCardImg time={time} />
+    <div
+      className={S.soldoutCard}
+      key={id}
+      onClick={() => navigate(`/purchase/${id}`)}
+    >
+      <SoldoutCardImg
+        time={time.split("T")[1]}
+        isFull={true}
+        productPicture={productPicture}
+      />
       <IconLabel
         color={COLORS.text}
         backgroundColor={COLORS.whiteGray}
@@ -31,19 +43,15 @@ const SoldoutCard = ({
       </IconLabel>
 
       <div className={S.soldoutCard__title}>
-        <Text color={COLORS.text} fontSize="1rem">
-          {name}
-        </Text>
-        <Text color={COLORS.gray} fontSize="0.75rem">
-          {location}
-        </Text>
+        <span className={S.soldoutCard__name}>{name}</span>
+        <span className={S.soldoutCard__location}>{location}</span>
       </div>
       <div className={S.soldoutCard__price}>
         <Text color={COLORS.red} fontSize="0.75rem">
           {discount}%
         </Text>
         <Text color={COLORS.text} fontSize="0.75rem">
-          {price}원
+          {formatPrice(+calculatePrice(discount, price))}원
         </Text>
       </div>
     </div>
