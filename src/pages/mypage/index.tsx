@@ -14,6 +14,7 @@ function index() {
         <Header backIcon={true} logoIcon="logo" />
       </div>
       <Mypage />
+      {/* <Nav/> */}
     </>
   );
 }
