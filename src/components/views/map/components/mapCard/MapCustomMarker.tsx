@@ -27,7 +27,7 @@ export const MapCustomMarker = ({
         clickable={true}
         image={{
           src: iconObject,
-          size: { width: 30, height: 30 },
+          size: { width: 27, height: 30 },
         }}
         onClick={isClick}
       />

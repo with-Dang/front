@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Map, MapMarker } from "react-kakao-maps-sdk";
 import { IconCurrentLocation } from "../../../../assets/png";
 import { useSwipeHandler } from "../../../../hook/map/useSwipeHandler";
-import { MapItemProps } from "../../../../types/map/type";
+import { MapItemList } from "../../../../types/map/type";
 import S from "./CreateMap.module.css";
 import { MapCardItem } from "./mapCard/MapCardItem";
 import { MapCustomMarker } from "./mapCard/MapCustomMarker";
@@ -15,7 +15,7 @@ interface Location {
 interface MapPops {
   currentLocation: Location;
   level?: number;
-  mapList: MapItemProps[];
+  mapList: MapItemList;
 }
 export function CreateMap({ currentLocation, level = 4, mapList }: MapPops) {
   const [center, setCenter] = useState<Location>(currentLocation);
@@ -27,13 +27,19 @@ export function CreateMap({ currentLocation, level = 4, mapList }: MapPops) {
     if (isClick !== null) {
       const newIndex = (isClick + delta + mapList.length) % mapList.length;
       setIsClick(newIndex);
-      handleSetCenter(mapList[newIndex].center);
+      handleSetCenter({
+        lat: parseFloat(mapList[newIndex].lat),
+        lng: parseFloat(mapList[newIndex].lng),
+      });
     } else if (mapList.length > 0) {
       setIsClick(0);
-      handleSetCenter(mapList[0].center);
+      handleSetCenter({
+        lat: parseFloat(mapList[0].lat),
+        lng: parseFloat(mapList[0].lng),
+      });
     }
   };
-
+  console.log(parseFloat(mapList[0].lat));
   const {
     handleTouchStart,
     handleTouchMove,
@@ -56,9 +62,12 @@ export function CreateMap({ currentLocation, level = 4, mapList }: MapPops) {
       {mapList.map((item, idx) => (
         <React.Fragment key={idx}>
           <MapCustomMarker
-            title={item.title}
-            center={item.center}
-            category={item.category}
+            title={item.facility}
+            center={{
+              lng: parseFloat(item.lng),
+              lat: parseFloat(item.lat),
+            }}
+            category={"any"}
             isClick={() => setIsClick(isClick === idx ? null : idx)}
           />
         </React.Fragment>
@@ -90,8 +99,8 @@ export function CreateMap({ currentLocation, level = 4, mapList }: MapPops) {
               onMouseLeave={handleMouseUp}
             >
               <MapCardItem
-                title={item.title}
-                content={item.content}
+                title={item.facility}
+                content={item.tel}
                 address={item.address}
               />
             </div>
