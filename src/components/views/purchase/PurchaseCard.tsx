@@ -23,11 +23,7 @@ const PurchaseCard = ({
   const navigate = useNavigate();
   return (
     <div className={P.parchaseCard} onClick={() => navigate(`/purchase/${id}`)}>
-      <SoldoutCardImg
-        time={time.split("T")[1]}
-        size="lg"
-        productPicture={productPicture}
-      />
+      <SoldoutCardImg time={time} size="lg" productPicture={productPicture} />
 
       <div className={S.soldoutCard__title}>
         <span className={S.soldoutCard__name}>{name}</span>

@@ -35,7 +35,6 @@ function PaymentMethod({ price = 50000 }: PaymentMethodProps) {
         { amount: amount.value, paymentWidget: widgets },
         {
           onSuccess: async ({ data }) => {
-            console.log("🚀 ~ onSuccess: ~ data:", data);
             // 결제 요청이 성공하면 paymentWidget 로직 실행
             if (widgets && data.orderId) {
               try {

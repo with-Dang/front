@@ -6,7 +6,6 @@ import S from "./Pick.module.css";
 
 const PickContent = () => {
   const { data: pickList } = usePickItemListQuery();
-  console.log(pickList);
   return (
     <div className={S.pickContent}>
       {pickList?.tourItems?.map((item) => (
