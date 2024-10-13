@@ -1,54 +1,58 @@
-"use client";
+import { IconType } from "@react-icons/all-files";
+import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Text from "../../atoms/text/Text";
-import { navItems, type NavItem } from "./Nav.const";
-import S from "./Nav.module.css";
-
-export interface NavProps {
-  title?: string;
-  maxCnt?: number;
-  type?: string;
-  subtitle?: string;
-  essential?: boolean;
-}
-export function Nav() {
+import { NavIcons } from "./constant";
+import styles from "./Nav.module.css";
+type NavItemProps = {
+  icon: IconType;
+  name: string;
+  route: string;
+};
+const Item = ({ icon: Icon, name, route }: NavItemProps) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const pathname = location.pathname;
   const selectedPath =
-    pathname === "/" ? pathname : pathname.split("/").slice(1, 3).join("/");
-  const handleNavigate = (path: string) => {
-    navigate(`/${path}`);
+    location.pathname === ""
+      ? location.pathname
+      : location.pathname.split("/").slice(1, 3).join("/");
+  console.log(selectedPath);
+  const iconFill = selectedPath === route.split("?")[0] ? "#000" : "#999";
+  const handleRoute = () => {
+    navigate(`/${route}`);
   };
   return (
-    <div className={S.Nav__wrapper}>
-      {navItems.map(({ path, onIcon, offIcon, text }: NavItem) => {
-        const [lastPathSegment] = path.split("/").slice(-1);
-        const isIcon = lastPathSegment.startsWith(selectedPath);
-
-        return (
-          <div
-            key={path}
-            className={S.Nav__Icon}
-            onClick={() => handleNavigate(path)}
-          >
-            <img
-              src={isIcon ? onIcon : offIcon}
-              alt={text}
-              className={text === "홈" ? S.Nav__Icon__home : S.Nav__Icon__img}
-            />
-            {text !== "홈" && (
-              <Text
-                color={isIcon ? "#000" : "#989898"}
-                fontSize="0.6875rem"
-                fontWeight="600"
-              >
-                {text}
-              </Text>
-            )}
-          </div>
-        );
-      })}
+    <div
+      className={`${styles.nav__icon__wrapper} ${
+        name === "" ? styles.nav__icon__home : ""
+      }`}
+    >
+      <div className={styles.nav__icon} onClick={handleRoute}>
+        <Icon
+          width={100}
+          height={100}
+          color={name === "" ? "#fff" : iconFill}
+        />
+        {name && (
+          <Text color={iconFill} fontSize={"0.375rem"} fontWeight={"0.25rem"}>
+            {name}
+          </Text>
+        )}
+      </div>
     </div>
   );
-}
+};
+
+const Nav = () => {
+  return (
+    <div className={styles.nav__wrapper}>
+      {NavIcons.map((item) => (
+        <React.Fragment key={item.name}>
+          <Item icon={item.icon} name={item.name} route={item.route} />
+        </React.Fragment>
+      ))}
+    </div>
+  );
+};
+
+export default Nav;

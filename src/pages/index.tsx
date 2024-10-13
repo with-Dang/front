@@ -8,7 +8,11 @@ function index() {
   return (
     <>
       <Header />
-      <div style={{ paddingTop: "2.75rem" }}>
+      <div
+        style={{
+          paddingTop: "2.75rem",
+        }}
+      >
         <AdverSlider />
         <Soldout />
         <Pick />

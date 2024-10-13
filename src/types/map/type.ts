@@ -51,3 +51,23 @@ export type PickItemDetail = PickItem & {
   relaRntlPrdlst?: string;
   acmpyNeedMtr?: string;
 };
+
+export type MapItem = {
+  category: string;
+  unqId: string;
+  city: string;
+  facility: string;
+  lcnsInfo: string;
+  lcnsAprDate: string;
+  bsnsStts: string;
+  tel: string;
+  cls: string;
+  zipCode: string;
+  streetNameAddress: string;
+  address: string;
+  lat: string;
+  lng: string;
+  rgstDate: string;
+};
+
+export type MapItemList = MapItem[];

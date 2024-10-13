@@ -1,53 +1,36 @@
-.Nav__wrapper {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-
-  width: 100vw;
-  height: 4.25rem;
-  border-radius: 1.25rem 1.25rem 0rem 0rem;
-  background: #fff;
-  filter: drop-shadow(2px -4px 15px rgba(0, 0, 0, 0.1));
-  /* padding-left: 5vw; */
-  /* padding-right: 5vw; */
+.nav__icon__wrapper {
+  width: 2.625rem;
+  height: 2.625rem;
   display: flex;
   align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
-.Nav__Icon {
+.nav__icon {
   display: flex;
+  align-items: center;
   flex-direction: column;
+  white-space: nowrap;
+}
+
+.nav__icon__home {
+  background: #469387;
+  border-radius: 50%;
+  display: flex;
   align-items: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-.Nav__Icon__img {
-  width: 1.5rem;
-  height: 1.5rem;
-  margin-bottom: 0.53rem;
+  justify-content: center;
 }
 
-.Nav__Icon__home {
-  width: 2.5rem;
-  height: 2.5rem;
+.nav__icon span {
+  margin-top: 0.3rem;
 }
 
-@media only screen and (max-width: 430px) {
-  .Nav__wrapper {
-    width: 100%;
-  }
-}
-@media only screen and (min-width: 430px) and (max-width: 800px) {
-  .Nav__wrapper {
-    width: 100%;
-    max-width: 430px;
-    left: calc(50% - 215px);
-  }
-}
-
-@media (min-width: 800px) {
-  .Nav__wrapper {
-    width: 100%;
-    max-width: 600px;
-    left: calc(50% - 300px);
-  }
+.nav__wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: 0.84rem;
+  height: 3rem;
+  background-color: #fff;
 }

@@ -1,15 +1,34 @@
 import React, { useState } from "react";
+import { usePaymentHistoryQuery } from "../../../hook/history/usePaymentHistoryQuery";
 import { COLORS } from "../../../styles/Color";
+import {
+  PaymentHistory,
+  SimplePaymentHistoryItem,
+} from "../../../types/paymentHistory";
 import Text from "../../UI/atoms/text/Text";
 import { PaymentHistoryCard } from "./components/PaymentHistoryCard";
-import {
-  PAYMENTHISTORY,
-  PAYMENTHISTORYTEST,
-  PAYMENTHISTORYTEST2,
-} from "./constants/constant";
+import { PAYMENTHISTORY } from "./constants/constant";
 import S from "./PaymentHistoy.module.css";
 function PaymentHistoy() {
   const [select, setSelect] = useState<"progress" | "complete">("progress");
+  const { data: history } = usePaymentHistoryQuery();
+  console.log(history);
+
+  const extractSimplePaymentHistoryItems = (
+    items: PaymentHistory
+  ): SimplePaymentHistoryItem[] => {
+    return items.receipts.map((item) => ({
+      orderId: item.orderId, //결제 고유키
+      orderName: item.orderName, //결제이름
+      status: item.status, //진행상태
+      requestedAt: item.requestedAt,
+      approvedAt: item.approvedAt, //결제 승인 날짜
+      totalAmount: item.totalAmount, //전체금액
+      discount: item.discount,
+    }));
+  };
+  const simpleItems = history ? extractSimplePaymentHistoryItems(history) : [];
+  console.log(simpleItems);
   const handleSelect = (type: "progress" | "complete") => {
     setSelect(type);
   };
@@ -36,31 +55,29 @@ function PaymentHistoy() {
       </div>
       <div className={S.paymentHistory__list}>
         {select === "progress"
-          ? PAYMENTHISTORYTEST.map((item, idx) => (
+          ? simpleItems.map((item, idx) => (
               <React.Fragment key={idx}>
                 <PaymentHistoryCard
-                  state={"수령 전"}
-                  data={item.data}
-                  itemTitle={item.itemTitle}
-                  address={item.address}
-                  discountRate={item.discountRate}
-                  price={item.price}
-                  path={item.path}
-                  cancelPath={item.cancelPath}
+                  status={item.status}
+                  date={item.approvedAt}
+                  orderName={item.orderName}
+                  address={item.approvedAt} //주소가 없는뎅..?
+                  discount={item.discount}
+                  totalAmount={item.totalAmount}
+                  orderId={item.orderId}
                 />
               </React.Fragment>
             ))
-          : PAYMENTHISTORYTEST2.map((item, idx) => (
+          : simpleItems.map((item, idx) => (
               <React.Fragment key={idx}>
                 <PaymentHistoryCard
-                  state={item.state}
-                  data={item.data}
-                  itemTitle={item.itemTitle}
-                  address={item.address}
-                  discountRate={item.discountRate}
-                  price={item.price}
-                  path={item.path}
-                  cancelPath={item.cancelPath}
+                  status={item.status}
+                  date={item.approvedAt}
+                  orderName={item.orderName}
+                  address={item.approvedAt} //주소가 없는뎅..?
+                  discount={item.discount}
+                  totalAmount={item.totalAmount}
+                  orderId={item.orderId}
                 />
               </React.Fragment>
             ))}

@@ -24,7 +24,7 @@ const SoldoutCardImg = ({
       <Image
         src={productPicture ?? room}
         width={width}
-        height="auto"
+        height={width}
         borderRadius="7px"
         ratio={1}
       />
