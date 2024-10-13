@@ -17,6 +17,13 @@
   margin: 0 auto;
   height: var(--app-height);
 }
+.Element{
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.Element::-webkit-scrollbar {
+  display: none;
+}
 
 @media only screen and (max-width: 430px) {
   html {

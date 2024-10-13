@@ -5,7 +5,6 @@ import { COLORS } from "../../../styles/Color";
 import Image from "../../UI/atoms/image/Image";
 import Text from "../../UI/atoms/text/Text";
 import RouterLabel from "../../UI/molecules/routerLabel/RouterLabel";
-import Nav from "../../UI/organisms/nav/Nav";
 import S from "./Mypage.module.css";
 import { MYPAGECONSTANTS } from "./constants";
 
@@ -136,7 +135,6 @@ function Mypage() {
           </div>
         </div>
       </div>
-      <Nav/>
     </div>
   );
 }
