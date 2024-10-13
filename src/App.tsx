@@ -4,6 +4,7 @@ import {
   LoaderFunction,
   RouterProvider,
 } from "react-router-dom";
+import Nav from "./components/UI/organisms/nav/Nav";
 
 interface RouteCommon {
   loader?: LoaderFunction;
@@ -56,19 +57,25 @@ for (const path of Object.keys(pages)) {
     });
   }
 }
-
 const router = createBrowserRouter(
-  routes.map(({ Element, ErrorBoundary, ...rest }) => ({
-    ...rest,
-    element: (
-      <div className="App">
-        <Element />
-      </div>
-    ),
-    ...(ErrorBoundary && { errorElement: <ErrorBoundary /> }),
-  }))
-);
+  routes.map(({ Element, ErrorBoundary, ...rest }) => {
+    const NoneShowNav = rest.path.startsWith("/purchase/");
+    const ElementHeight = !NoneShowNav ? "calc(100vh - 4rem)" : ""; // 높이 설정
 
+    return {
+      ...rest,
+      element: (
+        <div className="App">
+          <div className="Element" style={{ height: ElementHeight }}>
+            <Element />
+          </div>
+          {!NoneShowNav && <Nav />} {/* NoneShowNav가 false일 때만 Nav 표시 */}
+        </div>
+      ),
+      ...(ErrorBoundary && { errorElement: <ErrorBoundary /> }),
+    };
+  })
+);
 const App = () => {
   return <RouterProvider router={router} />;
 };

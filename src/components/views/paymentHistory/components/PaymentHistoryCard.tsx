@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import room from "../../../../assets/png/room.png";
 import { COLORS } from "../../../../styles/Color";
+import { formatDate } from "../../../../utils/formatDate";
 import Image from "../../../UI/atoms/image/Image";
 import Text from "../../../UI/atoms/text/Text";
 import PriceBox from "../../../UI/molecules/priceBox/PriceBox";
@@ -8,42 +9,49 @@ import RouterLabel from "../../../UI/molecules/routerLabel/RouterLabel";
 import S from "./PaymentHistoryCard.module.css";
 
 type paymentHistoryCardProps = {
-  state: "수령 전" | "공구 확정" | "공구 실패";
-  data: string;
+  // state: "수령 전" | "공구 확정" | "공구 실패";
+  // data: string;
   itemImg?: string;
-  itemTitle: string;
+  // itemTitle: string;
   address: string;
-  discountRate: number;
-  price: number;
-  path: string;
-  cancelPath?: string;
-};
+  // discountRate: number;
+  // price: number;
+  // path: string;
+  // cancelPath?: string;
 
+  orderId: string;
+  orderName: string;
+  status: string; //"DONE";
+  // requestedAt: string;
+  date: string;
+  totalAmount: number;
+  discount: number | null;
+};
+// SimplePaymentHistoryItem
 export const PaymentHistoryCard = ({
-  state,
-  data,
+  orderId,
+  orderName,
+  status,
+  date,
+  totalAmount,
+  discount,
   itemImg = room,
-  itemTitle,
   address,
-  discountRate,
-  price,
-  path,
-  cancelPath,
 }: paymentHistoryCardProps) => {
   const navigate = useNavigate();
   const handleCancel = () => {
-    if (cancelPath) {
-      navigate(cancelPath);
+    if (orderId) {
+      navigate(`/payment/history/${orderId}`); // todo:: cancel 나오면 바꾸기
     }
   };
   return (
     <div>
       <RouterLabel
-        title={data}
+        title={formatDate(date)}
         color={COLORS.lightGray}
         fontSize="0.875rem"
         fontWeight="700"
-        url={`/payment-history/detail?${path}`} //수정필요
+        url={`/payment-history/detail?${orderId}`} //수정필요
         fill={COLORS.lightGray}
       />
       <div
@@ -54,7 +62,7 @@ export const PaymentHistoryCard = ({
         }}
       >
         <Text color={COLORS.lightGray} fontSize="0.875rem" fontWeight="700">
-          {state}
+          {status}
         </Text>
       </div>
       <div className={S.paymentHistory__item}>
@@ -67,16 +75,16 @@ export const PaymentHistoryCard = ({
         <div className={S.paymentHistory__item__content}>
           <span className={S.paymentHistory__item__content_fristSpan}>
             <Text color={COLORS.text} fontSize="1rem" fontWeight="700">
-              {itemTitle}
+              {orderName}
             </Text>
           </span>
           <Text color={COLORS.lightGray} fontSize="0.75rem" fontWeight="400">
             {address}
           </Text>
-          <PriceBox discountRate={discountRate} price={price} />
+          <PriceBox discountRate={discount? discount : 0} price={totalAmount} />
         </div>
       </div>
-      {state === "수령 전" ? (
+      {status === "수령 전" ? (
         <div className={S.paymentHistory__button} onClick={handleCancel}>
           <Text color={COLORS.lightGray} fontSize="0.75rem" fontWeight="600">
             결제취소
