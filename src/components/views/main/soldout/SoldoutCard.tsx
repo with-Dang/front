@@ -21,6 +21,16 @@ const SoldoutCard = ({
   productPicture,
 }: SoldoutProps) => {
   const navigate = useNavigate();
+  const MAXTEXTLENGTH = 20;
+  const truncatedName =
+    name.length > MAXTEXTLENGTH
+      ? `${name.substring(0, MAXTEXTLENGTH)}...`
+      : name;
+  const truncatedLocation = location
+    ? location.length > MAXTEXTLENGTH + 7
+      ? `${location.substring(0, MAXTEXTLENGTH + 7)}...`
+      : location
+    : "";
   return (
     <div
       className={S.soldoutCard}
@@ -31,6 +41,7 @@ const SoldoutCard = ({
         time={time.split("T")[1]}
         isFull={true}
         productPicture={productPicture}
+        width="17rem"
       />
       <IconLabel
         color={COLORS.text}
@@ -43,8 +54,8 @@ const SoldoutCard = ({
       </IconLabel>
 
       <div className={S.soldoutCard__title}>
-        <span className={S.soldoutCard__name}>{name}</span>
-        <span className={S.soldoutCard__location}>{location}</span>
+        <span className={S.soldoutCard__name}>{truncatedName}</span>
+        <span className={S.soldoutCard__location}>{truncatedLocation}</span>
       </div>
       <div className={S.soldoutCard__price}>
         <Text color={COLORS.red} fontSize="0.75rem">
