@@ -14,37 +14,38 @@ type Card = {
 };
 
 export type PaymentHistoryItem = {
-  mId: string;
+  mId: string; //결제 내역의 고유 식별자
   lastTransactionKey: string;
-  paymentKey: string;
-  orderId: string;
-  orderName: string;
+  paymentKey: string; //결제의 고유 키.
+  orderId: string; //주문의 고유 식별자.
+  orderName: string; //주문의 이름.
   taxExemptionAmount: number;
-  status: string; //"DONE";
+  status: string; //결제 상태 "DONE"| ,...;
   requestedAt: string;
-  approvedAt: string;
+  approvedAt: string; //결제 승인 시간 (ISO 8601 형식)
   useEscrow: boolean;
   cultureExpense: boolean;
-  card: Card;
-  virtualAccount: null;
-  transfer: null;
-  mobilePhone: null;
-  giftCertificate: null;
-  cashReceipt: null;
-  cashReceipts: null;
-  discount: null | number;
-  cancels: null;
+  card: Card; //카드 정보 (Card 타입).
+  virtualAccount: string | null; //가상 계좌 정보 (현재는 null)
+  transfer: string | null; //송금 정보
+  mobilePhone: string | null; //모바일 전화 정보
+  giftCertificate: string | null;
+  cashReceipt: string | null; //현금 영수증 정보
+  cashReceipts: string | null; // 현금 영수증 리스트
+  discount: null | number; //할인 금액
+  cancels: string | null; // 취소된 거래 정보
   secret: string;
-  type: string; //"NORMAL";
+  type: string; //결제 유형 "NORMAL"| ...,;
   easyPay: {
     provider: string; //"토스페이";
-    amount: number;
-    discountAmount: number;
+    amount: number; //간편 결제 금액.
+    discountAmount: number; //간편 결제 할인 금액
   };
   country: string; //"KR";
-  failure: null;
-  isPartialCancelable: true;
+  failure: string | null; //결제 실패 정보
+  isPartialCancelable: boolean; // 부분 취소 가능 여부
   receipt: {
+    //영수증 정보.
     url: string;
   };
   checkout: {
@@ -65,59 +66,12 @@ export type SimplePaymentHistoryItem = {
   orderId: string;
   orderName: string;
   status: string; //"DONE";
-  requestedAt: string;
+  // requestedAt: string;
   approvedAt: string;
   totalAmount: number;
+  discount: number | null;
 };
 
-export type qwe = {
-  mId: string;
-  vat: number;
-  card: Card;
-  type: string; //"NORMAL";
-  method: string; //"간편결제";
-  secret: string;
-  status: string; //"DONE";
-  cancels: null;
-  country: string; //"KR";
-  easyPay: {
-    amount: 0;
-    provider: string; //"토스페이";
-    discountAmount: number;
-  };
-  failure: null;
-  orderId: string;
-  receipt: {
-    url: string;
-  };
-  version: string;
-  checkout: {
-    url: string;
-  };
-  currency: string; //"KRW";
-  discount: number | null;
-  metadata: null;
-  transfer: null;
-  orderName: string;
-  useEscrow: false;
-  approvedAt: string;
-  paymentKey: string;
-  cashReceipt: null;
-  mobilePhone: null;
-  requestedAt: string;
-  totalAmount: number;
-  cashReceipts: null;
-  balanceAmount: number;
-  taxFreeAmount: number;
-  cultureExpense: boolean;
-  suppliedAmount: number;
-  virtualAccount: null;
-  giftCertificate: null;
-  lastTransactionKey: string;
-  taxExemptionAmount: number;
-  isPartialCancelable: boolean;
-};
 export type PaymentHistory = {
   receipts: PaymentHistoryItem[];
 };
-
