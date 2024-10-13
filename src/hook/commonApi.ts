@@ -4,8 +4,8 @@ import store from "../redux/store";
 
 export const axiosInstance = axios.create({
   baseURL:
-    import.meta.env.VITE_API_URL,
-    // "http://localhost:8080/v1",
+    // import.meta.env.VITE_LOCAL_URL,
+    "http://localhost:8080/v1",
   timeout: 120000,
   withCredentials: true,
 });
@@ -40,7 +40,7 @@ export const commonApis: HttpClient = axiosInstance;
 axiosInstance.interceptors.request.use(
   async (config) => {
     const token = store.getState().auth.session;
-    console.log("🚀 ~ token:", token);
+    // console.log("🚀 ~ token:", token);
 
     if (token) {
       // config.headers["Cookie"] = `JSESSIONID ${token}`;
@@ -61,9 +61,8 @@ axiosInstance.interceptors.response.use(
     console.log(err);
     // access token 만료 시
     if (response?.status && response?.status === 403) {
-      if (typeof window !== "undefined") {
-        window.location.href = "/login";
-      }
+      window.location.href = "/login";
+      // }
       localStorage.clear();
       return config;
     }

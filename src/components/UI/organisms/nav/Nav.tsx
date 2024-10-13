@@ -16,7 +16,6 @@ const Item = ({ icon: Icon, name, route }: NavItemProps) => {
     location.pathname === ""
       ? location.pathname
       : location.pathname.split("/").slice(1, 3).join("/");
-  console.log(selectedPath);
   const iconFill = selectedPath === route.split("?")[0] ? "#000" : "#999";
   const handleRoute = () => {
     navigate(`/${route}`);
@@ -29,12 +28,12 @@ const Item = ({ icon: Icon, name, route }: NavItemProps) => {
     >
       <div className={styles.nav__icon} onClick={handleRoute}>
         <Icon
-          width={100}
-          height={100}
+          // width={100}
+          // height={100}
           color={name === "" ? "#fff" : iconFill}
         />
         {name && (
-          <Text color={iconFill} fontSize={"0.375rem"} fontWeight={"0.25rem"}>
+          <Text color={iconFill} fontSize={"0.5rem"} fontWeight={"0.25rem"}>
             {name}
           </Text>
         )}

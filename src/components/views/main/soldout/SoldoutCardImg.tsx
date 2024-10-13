@@ -1,9 +1,11 @@
 import room from "@assets/png/room.png";
 import { IoMdTime } from "@react-icons/all-files/io/IoMdTime";
 import { COLORS } from "../../../../styles/Color";
+import { calculateDate, isRemainDay } from "../../../../utils/formatDate";
 import IconLabel from "../../../UI/atoms/iconLabel/IconLabel";
 import Image from "../../../UI/atoms/image/Image";
 
+import { useEffect, useState } from "react";
 import S from "./Soldout.module.css";
 
 const SoldoutCardImg = ({
@@ -19,6 +21,16 @@ const SoldoutCardImg = ({
   isFull?: boolean;
   productPicture?: string;
 }) => {
+  const [remainingTime, setRemainingTime] = useState<string>(
+    calculateDate(time)
+  );
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setRemainingTime(calculateDate(time));
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, [time]);
   return (
     <div className={isFull ? S.soldoutCard__label : S.soldoutCard__label__full}>
       <Image
@@ -30,10 +42,10 @@ const SoldoutCardImg = ({
       />
       <span className={S.soldoutCard__time}>
         <IconLabel
-          color={COLORS.white}
-          backgroundColor={COLORS.lightRed}
+          color={isRemainDay(time) ? COLORS.text : COLORS.white}
+          backgroundColor={isRemainDay(time) ? COLORS.white : COLORS.lightRed}
           borderRadius="50px"
-          text={time}
+          text={remainingTime}
           size={size}
         >
           <IoMdTime />

@@ -21,6 +21,11 @@
   justify-content: center;
 }
 
+.nav__icon svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
 .nav__icon span {
   margin-top: 0.3rem;
 }

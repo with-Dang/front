@@ -7,7 +7,7 @@ export const NavIcons = [
   {
     name: "공동구매",
     icon: AiOutlineShopping,
-    route: "purchase",
+    route: "purchase?category=total&soldout=false",
   },
   {
     name: "결제내역",

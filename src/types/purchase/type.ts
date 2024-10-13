@@ -8,6 +8,7 @@ export type ProductProps = {
   closeTime: string;
   discountRate: number;
   productPicture: string;
+  productDetailPicture: string;
   xcoordinate?: string;
   ycoordinate?: string;
 };

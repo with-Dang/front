@@ -1,29 +1,49 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { usePurchaseQuery } from "../../../hook/purchase/usePurchaseQuery";
+import { ProductProps } from "../../../types/purchase/type";
 import Check from "../../UI/atoms/check/Check";
-import ChipBox from "../../UI/molecules/chipBox/ChipBox";
 import S from "./Purchase.module.css";
 import PurchaseCard from "./PurchaseCard";
 import Search from "./Search";
 
 const PurchaseContent = () => {
-  // const [searchParams] = useSearchParams();
-  // const category = searchParams.get("category");
   const { data: purchaseList } = usePurchaseQuery();
-  console.log("🚀 ~ PurchaseContent ~ data:", purchaseList);
 
   const [searchStr, setSearchStr] = useState("");
+
+  const [searchParams] = useSearchParams();
+  const [filteredProducts, setFilteredProducts] = useState<ProductProps[]>([]);
+
+  useEffect(() => {
+    const soldout = searchParams.get("soldout") ?? "false";
+    const products = purchaseList?.products?.slice();
+
+    if (soldout === "true") {
+      products?.sort((a, b) => {
+        return (
+          new Date(a.closeTime).getTime() - new Date(b.closeTime).getTime()
+        );
+      });
+    } else {
+      products?.sort((a, b) => +a.id - +b.id);
+    }
+
+    setFilteredProducts(products || []);
+  }, [searchParams, purchaseList]);
+
   return (
     <>
       <div className={S.purchaseHeader}>
         <Search value={searchStr} setValue={setSearchStr} />
         <div className={S.purchaseHeader__filter}>
-          <ChipBox />
+          {/* <ChipBox /> */}
+          <div></div>
           <Check />
         </div>
       </div>
       <div className={S.parchaseContent}>
-        {purchaseList?.products
+        {filteredProducts
           ?.filter(
             (el) =>
               el.productName.includes(searchStr) ||
