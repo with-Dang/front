@@ -5,7 +5,6 @@ import Text from "../../UI/atoms/text/Text";
 
 const PaymentLoading = () => {
   const [searchParams] = useSearchParams();
-  console.log("🚀 ~ PaymentLoading ~ searchParams:", searchParams);
   useSuccessPayment(String(searchParams));
 
   return (

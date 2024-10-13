@@ -34,7 +34,9 @@ const PurDetail = () => {
           productPicture={detailData?.productPicture ?? ""}
         />
         {/* <PurDetailMap /> */}
-        <PurDetailInfo />
+        <PurDetailInfo
+          productDetailPicture={detailData?.productDetailPicture ?? ""}
+        />
       </div>
       <div className={S.purDetail__btn__container}>
         <Button
