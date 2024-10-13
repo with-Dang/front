@@ -1,0 +1,53 @@
+.Nav__wrapper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 4.25rem;
+  border-radius: 1.25rem 1.25rem 0rem 0rem;
+  background: #fff;
+  filter: drop-shadow(2px -4px 15px rgba(0, 0, 0, 0.1));
+  /* padding-left: 5vw; */
+  /* padding-right: 5vw; */
+  display: flex;
+  align-items: center;
+}
+.Nav__Icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.Nav__Icon__img {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-bottom: 0.53rem;
+}
+
+.Nav__Icon__home {
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+@media only screen and (max-width: 430px) {
+  .Nav__wrapper {
+    width: 100%;
+  }
+}
+@media only screen and (min-width: 430px) and (max-width: 800px) {
+  .Nav__wrapper {
+    width: 100%;
+    max-width: 430px;
+    left: calc(50% - 215px);
+  }
+}
+
+@media (min-width: 800px) {
+  .Nav__wrapper {
+    width: 100%;
+    max-width: 600px;
+    left: calc(50% - 300px);
+  }
+}

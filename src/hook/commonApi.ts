@@ -57,16 +57,16 @@ axiosInstance.interceptors.response.use(
     return res;
   },
   (err) => {
-    // const { config, response } = err;
+    const { config, response } = err;
     console.log(err);
     // access token 만료 시
-    // if (response?.status && response?.status === 403) {
-    //   if (typeof window !== "undefined") {
-    //     window.location.href = "/login";
-    //   }
-    //   localStorage.clear();
-    //   return config;
-    // }
+    if (response?.status && response?.status === 403) {
+      if (typeof window !== "undefined") {
+        window.location.href = "/login";
+      }
+      localStorage.clear();
+      return config;
+    }
     return Promise.reject(err);
   }
 );

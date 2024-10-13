@@ -1,4 +1,5 @@
 import Header from "../../components/UI/organisms/header/Header";
+import { Nav } from "../../components/UI/organisms/nav/Nav";
 import PaymentHistoy from "../../components/views/paymentHistory/PaymentHistoy";
 
 function index() {
@@ -6,6 +7,7 @@ function index() {
     <>
       <Header logoIcon="logo" backIcon={true} />
       <PaymentHistoy />
+      <Nav />
     </>
   );
 }

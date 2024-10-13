@@ -30,6 +30,7 @@ const SoldoutCard = ({
       <SoldoutCardImg
         time={time.split("T")[1]}
         isFull={true}
+        size="lg"
         productPicture={productPicture}
       />
       <IconLabel

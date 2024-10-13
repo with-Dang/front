@@ -1,4 +1,5 @@
 import Header from "../../components/UI/organisms/header/Header";
+import { Nav } from "../../components/UI/organisms/nav/Nav";
 import Mypage from "../../components/views/mypage/Mypage";
 
 function index() {
@@ -14,6 +15,7 @@ function index() {
         <Header backIcon={true} logoIcon="logo" />
       </div>
       <Mypage />
+      <Nav />
     </>
   );
 }
