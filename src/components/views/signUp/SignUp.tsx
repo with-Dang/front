@@ -26,7 +26,7 @@ const SignUp = () => {
       <Text fontSize="1.5rem">회원가입</Text>
       <form onSubmit={handleSubmit(onSubmit)} className={S.signup__form}>
         <InputBox
-          isBtn={true}
+          isBtn={false}
           label="아이디"
           type="text"
           register={register("id")}
