@@ -4,7 +4,9 @@ import Button from "../../UI/atoms/button/Button";
 import InputBox from "../../UI/molecules/inputBox/InputBox";
 
 import { SubmitHandler, useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../../../hook/login/useLoginMutation";
+import Text from "../../UI/atoms/text/Text";
 import { SignUpFormValues } from "../signUp/SignUp";
 import S from "./Login.module.css";
 
@@ -18,6 +20,7 @@ const Login = () => {
   const { register, handleSubmit } = useForm<SignUpFormValues>();
   const onSubmit: SubmitHandler<SignUpFormValues> = (data) => loginMutate(data);
 
+  const navigate = useNavigate();
   // const [disabled, setDisabled] = useState(false);
 
   return (
@@ -44,6 +47,11 @@ const Login = () => {
           type="submit"
         />
       </form>
+      <div className={S.login__signup}>
+        <Text color={COLORS.gray} fontSize="0.8125rem">
+          <span onClick={() => navigate("/signup")}>회원가입</span>
+        </Text>
+      </div>
     </div>
   );
 };

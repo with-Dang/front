@@ -17,3 +17,12 @@
 .login__form {
   width: 100%;
 }
+
+.login__signup {
+  width: 100%;
+  text-align: right;
+}
+
+.login__signup span {
+  cursor: pointer;
+}
