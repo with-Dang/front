@@ -61,7 +61,10 @@ const routes: IRoute[] = [...dynamicRoutes, ...staticRoutes];
 
 const router = createBrowserRouter(
   routes.map(({ Element, ErrorBoundary, ...rest }) => {
-    const NoneShowNav = rest.path.startsWith("/purchase/");
+    const NoneShowNav =
+      rest.path.startsWith("/purchase/") ||
+      rest.path.startsWith("/login") ||
+      rest.path.startsWith("/signup");
     const ElementHeight = !NoneShowNav ? "calc(100vh - 4rem)" : ""; // 높이 설정
 
     return {
