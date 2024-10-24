@@ -4,7 +4,7 @@ import store from "../redux/store";
 
 export const axiosInstance = axios.create({
   baseURL:
-    import.meta.env.VITE_LOCAL_URL,
+    import.meta.env.VITE_API_URL,
     // "http://localhost:8080/v1",
   timeout: 120000,
   withCredentials: true,
