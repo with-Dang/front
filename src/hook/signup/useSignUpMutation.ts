@@ -1,4 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
+import { message } from "antd";
 import { AxiosResponse } from "axios";
 import { useNavigate } from "react-router-dom";
 import { SignUpFormValues } from "../../components/views/signUp/SignUp";
@@ -30,12 +31,12 @@ export function useSignUpMutation() {
     },
     onSuccess: (data) => {
       console.log(data);
-      // TODO: 성공 알림
+      message.success("회원가입에 성공하였습니다.");
       navitgate("/login"); // 홈화면으로 이동
     },
     onError: (error) => {
       console.log(error);
-      // TODO: 실패 알림
+      message.error("이미 존재하는 회원입니다.");
     },
   });
 }

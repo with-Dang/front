@@ -18,8 +18,9 @@ export type SignUpFormValues = {
 
 const SignUp = () => {
   const { register, handleSubmit } = useForm<SignUpFormValues>();
-  const { mutate } = useSignUpMutation();
-  const onSubmit: SubmitHandler<SignUpFormValues> = (data) => mutate(data);
+  const { mutate: signupMutate } = useSignUpMutation();
+  const onSubmit: SubmitHandler<SignUpFormValues> = (data) =>
+    signupMutate(data);
 
   return (
     <div className={S.signup}>
