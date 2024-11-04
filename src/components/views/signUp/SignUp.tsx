@@ -1,14 +1,13 @@
+import { SubmitHandler, useForm } from "react-hook-form";
+import { useSignUpMutation } from "../../../hook/signup/useSignUpMutation";
 import { COLORS } from "../../../styles/Color";
 import Button from "../../UI/atoms/button/Button";
 import Text from "../../UI/atoms/text/Text";
 import InputBox from "../../UI/molecules/inputBox/InputBox";
 
-import { SubmitHandler, useForm } from "react-hook-form";
-import { useSignUpMutation } from "../../../hook/signup/useSignUpMutation";
 import S from "./SignUp.module.css";
 
 export type SignUpFormValues = {
-  id: string;
   email: string;
   nickname: string;
   password: string;
@@ -26,13 +25,6 @@ const SignUp = () => {
     <div className={S.signup}>
       <Text fontSize="1.5rem">회원가입</Text>
       <form onSubmit={handleSubmit(onSubmit)} className={S.signup__form}>
-        <InputBox
-          isBtn={false}
-          label="아이디"
-          type="text"
-          register={register("id")}
-          // button="중복확인"
-        />
         <InputBox
           isBtn={false}
           label="이메일"

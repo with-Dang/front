@@ -18,7 +18,7 @@ function Mypage() {
   const { data: memberInfo } = useMemberQuery();
   console.log("🚀 ~ Mypage ~ memberInfo:", memberInfo);
   const infoItems = [
-    { label: "아이디", value: memberInfo?.email ?? "" },
+    // { label: "아이디", value: memberInfo?.email ?? "" },
     { label: "이메일", value: memberInfo?.email ?? "" },
     { label: "휴대폰 번호", value: memberInfo?.phone ?? "" },
   ];
