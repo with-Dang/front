@@ -3,9 +3,8 @@ import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 import store from "../redux/store";
 
 export const axiosInstance = axios.create({
-  baseURL:
-    import.meta.env.VITE_API_URL,
-    // "http://localhost:8080/v1",
+  baseURL: import.meta.env.VITE_API_URL,
+  // "http://localhost:8080/v1",
   timeout: 120000,
   withCredentials: true,
 });
@@ -40,10 +39,11 @@ export const commonApis: HttpClient = axiosInstance;
 axiosInstance.interceptors.request.use(
   async (config) => {
     const token = store.getState().auth.session;
+    // const [cookies, ,] = useCookies(["JSESSIONID"]);
     // console.log("🚀 ~ token:", token);
 
     if (token) {
-      // config.headers["Cookie"] = `JSESSIONID ${token}`;
+      // config.headers["cookie"] = `JSESSIONID ${cookies.JSESSIONID}`;
     }
     return config;
   },
