@@ -5,6 +5,7 @@ import Button from "../../UI/atoms/button/Button";
 import Text from "../../UI/atoms/text/Text";
 import InputBox from "../../UI/molecules/inputBox/InputBox";
 
+import { useCheckEmailQuery } from "../../../hook/signup/useCheckEmailQuery";
 import S from "./SignUp.module.css";
 
 export type SignUpFormValues = {
@@ -16,10 +17,17 @@ export type SignUpFormValues = {
 };
 
 const SignUp = () => {
-  const { register, handleSubmit } = useForm<SignUpFormValues>();
+  const { register, handleSubmit, getValues } = useForm<SignUpFormValues>();
   const { mutate: signupMutate } = useSignUpMutation();
   const onSubmit: SubmitHandler<SignUpFormValues> = (data) =>
     signupMutate(data);
+
+  const { triggerCheckEmail } = useCheckEmailQuery();
+  const checkEmail = () => {
+    console.log(getValues("email"));
+    const email = getValues("email");
+    triggerCheckEmail(email);
+  };
 
   return (
     <div className={S.signup}>
@@ -30,6 +38,7 @@ const SignUp = () => {
           label="이메일"
           type="email"
           register={register("email")}
+          onClick={checkEmail}
         />
         <InputBox
           isBtn={false}

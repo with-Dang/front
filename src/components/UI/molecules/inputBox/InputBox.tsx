@@ -9,15 +9,16 @@ type InputBoxProp = {
   label: string;
   type: string;
   register: UseFormRegisterReturn;
+  onClick?: () => void;
   // value?: string;
   // onChange?: React.Dispatch<React.SetStateAction<string>>;
 };
 
-const InputBox = ({ label, isBtn, type, register }: InputBoxProp) => {
+const InputBox = ({ label, isBtn, type, register, onClick }: InputBoxProp) => {
   return (
     <div className={S.inputBox}>
       <Text fontWeight="700">{label}</Text>
-      <Input isBtn={isBtn} type={type} register={register} />
+      <Input isBtn={isBtn} type={type} register={register} onClick={onClick} />
     </div>
   );
 };

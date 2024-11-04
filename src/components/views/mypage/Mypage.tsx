@@ -1,5 +1,7 @@
 import room from "@assets/png/room.png";
+import { message } from "antd";
 import React from "react";
+import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { useMemberQuery } from "../../../hook/mypage/useMemberQuery";
 import { COLORS } from "../../../styles/Color";
@@ -10,30 +12,28 @@ import S from "./Mypage.module.css";
 import { MYPAGECONSTANTS } from "./constants";
 
 function Mypage() {
-  // const name = "이름";
-  // const userId = "isad";
-  // const phoneNumber = "010-3333-1234";
-  // const email = "skh@fajkfgb";
-
   const { data: memberInfo } = useMemberQuery();
   console.log("🚀 ~ Mypage ~ memberInfo:", memberInfo);
   const infoItems = [
-    // { label: "아이디", value: memberInfo?.email ?? "" },
     { label: "이메일", value: memberInfo?.email ?? "" },
     { label: "휴대폰 번호", value: memberInfo?.phone ?? "" },
   ];
   const receiptItems = [
-    { label: "수령 전", value: 1 },
-    { label: "공구 확정", value: 2 },
-    { label: "공구 실패", value: 3 },
+    { label: "수령 전", value: 0 },
+    { label: "공구 확정", value: 0 },
+    { label: "공구 실패", value: 0 },
   ];
   const navigate = useNavigate();
   const handleNavigate = (url: string) => {
     navigate(url);
   };
+  const [, , removeCookies] = useCookies(["JSESSIONID"]);
   const handleBottomMenuClick = (path: string) => {
     if (path === "/logout") {
       console.log("로그아웃");
+      removeCookies("JSESSIONID"); // 쿠키 삭제
+      message.success("로그아웃 되었습니다.");
+      handleNavigate("/");
     } else handleNavigate(path);
   };
 
