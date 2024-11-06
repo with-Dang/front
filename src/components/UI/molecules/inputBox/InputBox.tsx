@@ -18,7 +18,13 @@ const InputBox = ({ label, isBtn, type, register, onClick }: InputBoxProp) => {
   return (
     <div className={S.inputBox}>
       <Text fontWeight="700">{label}</Text>
-      <Input isBtn={isBtn} type={type} register={register} onClick={onClick} />
+      <Input
+        isBtn={isBtn}
+        type={type}
+        register={register}
+        onClick={onClick}
+        button="중복확인"
+      />
     </div>
   );
 };

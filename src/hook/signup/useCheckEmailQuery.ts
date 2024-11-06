@@ -1,4 +1,5 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { message } from "antd";
 import axios, { AxiosResponse } from "axios";
 import { commonApis } from "../commonApi";
 
@@ -13,9 +14,17 @@ async function checkEmail(email: string): Promise<string> {
         headers: { accept: `*/*` },
       }
     );
+    if (res.status === 200) {
+      message.success("사용 가능한 이메일입니다.");
+    }
     return res.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
+      if (error.status === 400) {
+        message.error(
+          "이미 사용 중인 이메일입니다. 다른 이메일을 사용해주세요."
+        );
+      }
       console.error("Axios error:", {
         message: error.message,
         response: error.response?.data,
@@ -29,18 +38,15 @@ async function checkEmail(email: string): Promise<string> {
   }
 }
 
-// useCheckEmailQuery 커스텀 훅
 export const useCheckEmailQuery = () => {
   const queryClient = useQueryClient();
 
-  // query만 준비하고 초기에는 자동 실행되지 않도록 설정
   const { data, error, isLoading } = useQuery<string, Error>({
     queryKey: ["checkEmail"],
-    queryFn: () => Promise.resolve(""), // 초기 실행 방지용으로 빈 함수
-    enabled: false, // 자동으로 실행되지 않도록 설정
+    queryFn: () => Promise.resolve(""),
+    enabled: false,
   });
 
-  // 특정 시점에 checkEmail을 호출하는 함수
   const triggerCheckEmail = async (email: string) => {
     return queryClient.fetchQuery({
       queryKey: ["checkEmail", email],

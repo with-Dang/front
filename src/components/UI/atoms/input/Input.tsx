@@ -1,6 +1,6 @@
 import { UseFormRegisterReturn } from "react-hook-form";
+import { COLORS } from "../../../../styles/Color";
 import Button from "../button/Button";
-import Text from "../text/Text";
 import S from "./Input.module.css";
 
 type InputProp = {
@@ -31,9 +31,15 @@ const Input = ({
             required
           />
           {onClick && (
-            <Button type="button" className={S.button} onClick={onClick}>
-              <Text fontSize="0.75rem">{button}</Text>
-            </Button>
+            <Button
+              color={COLORS.white}
+              backgroundColor={COLORS.gray}
+              fontSize="1rem"
+              text={button}
+              type="button"
+              className={S.button}
+              onClick={onClick}
+            ></Button>
           )}
         </span>
       )}
