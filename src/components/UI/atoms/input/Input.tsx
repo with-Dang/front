@@ -1,5 +1,6 @@
 import { UseFormRegisterReturn } from "react-hook-form";
-import Text from "../text/Text";
+import { COLORS } from "../../../../styles/Color";
+import Button from "../button/Button";
 import S from "./Input.module.css";
 
 type InputProp = {
@@ -7,6 +8,7 @@ type InputProp = {
   type: string;
   button?: string;
   register: UseFormRegisterReturn;
+  onClick?: () => void;
 };
 
 const Input = ({
@@ -14,6 +16,7 @@ const Input = ({
   type = "text",
   button = "중복확인",
   register,
+  onClick = () => {},
 }: InputProp) => {
   return (
     <>
@@ -27,9 +30,17 @@ const Input = ({
             {...register}
             required
           />
-          <button type="button" className={S.button}>
-            <Text fontSize="0.75rem">{button}</Text>
-          </button>
+          {onClick && (
+            <Button
+              color={COLORS.white}
+              backgroundColor={COLORS.gray}
+              fontSize="1rem"
+              text={button}
+              type="button"
+              className={S.button}
+              onClick={onClick}
+            ></Button>
+          )}
         </span>
       )}
     </>

@@ -31,10 +31,6 @@
 
 .button {
   width: 30%;
-  background-color: #2b2b2b;
-  color: #fff;
-  border-radius: 10px;
   border: none;
-  padding: 0.75rem 0;
   letter-spacing: 0.125rem;
 }

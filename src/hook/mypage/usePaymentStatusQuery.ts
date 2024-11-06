@@ -1,16 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import axios, { AxiosResponse } from "axios";
-import { PickItemList } from "../../types/map";
+import { PaymentStatusType } from "../../types/payment/type";
 import { commonApis } from "../commonApi";
 
-// 울산 픽 리스트 (pick)
-const API_URL = "/pick";
+// 결제 내역 상태 (payment/status)
+const API_URL = "/payment/status";
 
-async function fetchPickItemList(): Promise<PickItemList> {
+async function fetchPaymentStatus(): Promise<PaymentStatusType> {
   try {
-    const res: AxiosResponse<PickItemList> = await commonApis.get(API_URL, {
-      headers: { accept: `*/*` },
-    });
+    const res: AxiosResponse<PaymentStatusType> = await commonApis.get(
+      API_URL,
+      {
+        headers: { accept: `*/*` },
+      }
+    );
     return res.data;
   } catch (error) {
     // Axios 에러를 확인하여 상세 정보를 로그에 출력
@@ -27,10 +30,10 @@ async function fetchPickItemList(): Promise<PickItemList> {
     throw error;
   }
 }
-export const usePickItemListQuery = () => {
-  return useQuery<PickItemList>({
-    queryKey: ["pickItemList"],
-    queryFn: fetchPickItemList,
+export const usePaymentStatusQuery = () => {
+  return useQuery<PaymentStatusType>({
+    queryKey: ["payment-status"],
+    queryFn: fetchPaymentStatus,
     // staleTime: 1000,
   });
 };
