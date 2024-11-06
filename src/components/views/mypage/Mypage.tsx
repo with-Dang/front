@@ -4,6 +4,7 @@ import React from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
 import { useMemberQuery } from "../../../hook/mypage/useMemberQuery";
+import { usePaymentStatusQuery } from "../../../hook/mypage/usePaymentStatusQuery";
 import { COLORS } from "../../../styles/Color";
 import Image from "../../UI/atoms/image/Image";
 import Text from "../../UI/atoms/text/Text";
@@ -18,10 +19,12 @@ function Mypage() {
     { label: "이메일", value: memberInfo?.email ?? "" },
     { label: "휴대폰 번호", value: memberInfo?.phone ?? "" },
   ];
+
+  const { data: paymentStatus } = usePaymentStatusQuery();
   const receiptItems = [
-    { label: "수령 전", value: 0 },
-    { label: "공구 확정", value: 0 },
-    { label: "공구 실패", value: 0 },
+    { label: "수령 전", value: paymentStatus?.pending ?? 0 },
+    { label: "공구 확정", value: paymentStatus?.success ?? 0 },
+    { label: "공구 실패", value: paymentStatus?.fail ?? 0 },
   ];
   const navigate = useNavigate();
   const handleNavigate = (url: string) => {
